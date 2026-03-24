@@ -7,6 +7,10 @@ class Triangulo:
     def calc_area(self):
         return self.b * self.h / 2
 
+# x é a referência do objeto criado pela instrução Triangulo()
+# x é um link <a href>
+# Triangulo() é a página
+
 x = Triangulo()
 print("Informe a base do triângulo")
 x.b = float(input())
