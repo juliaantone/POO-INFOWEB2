@@ -1,6 +1,5 @@
-frase = input("Digite uma frase: ")
-
-palavras = frase.split()
-
-for palavra in palavras:
+print("Digite uma frase: ")
+s = input()
+lista = s.split()
+for palavra in lista:
     print(palavra[::-1])
