@@ -17,7 +17,6 @@ class Agua:
 mes = input("Digite o mês por extenso: ")
 ano = int(input("Digite o ano por extenso: "))
 consumo = float(input("Digite o consumo em metros quadrado: "))
-
 conta = Agua(mes, ano, consumo)
 valor = conta.calcular_conta()
 
