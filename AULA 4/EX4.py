@@ -1,5 +1,3 @@
-#EXERCÍCIO 4
-
 entrada = input("Digite números separados por vírgula: ")
 
 numeros = entrada.split(',')

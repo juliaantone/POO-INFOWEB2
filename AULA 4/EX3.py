@@ -1,5 +1,3 @@
-#EXERCÍCIO 3
-
 frase = input("Digite uma frase: ")
 soma = 0
 for c in frase:

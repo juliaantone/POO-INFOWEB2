@@ -1,5 +1,3 @@
-#EXERCÍCIO 2
-
 expressao = input("Digite a operação tipo 20+100: ")
 
 if '+' in expressao:
