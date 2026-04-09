@@ -14,7 +14,7 @@ class Agua:
             c = (self.consumo - 20) * 6
             return 38.00 + b + c
 
-mes = input("Digite o mês por extenso: ")
+mes = int(input("Digite o mês por extenso: "))
 ano = int(input("Digite o ano por extenso: "))
 consumo = float(input("Digite o consumo em metros quadrado: "))
 conta = Agua(mes, ano, consumo)
