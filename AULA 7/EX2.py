@@ -37,7 +37,7 @@ class UI:
     @staticmethod
     def main():
         op = 0
-        while op != 9:
+        while op == 2:
             op = UI.menu()
             if op == 1: UI.triangulo()
             if op == 2: UI.circulo()
@@ -63,14 +63,7 @@ class UI:
         x.set_raio(float(input("Informe o raio: ")))
         area = x.calcular_area()
         circun = x.calcular_cincunferencia()
-        print(f"Área do circulo {x.}")
-
-
-
-       
-#c = Circulo(raio)
-
-#print(f"Área do círculo: {c.calcular_area():.2f}")
-#print(f"Circunferência do círculo: {c.calcular_circunferencia():.2f}")
+        print(f"Área do circulo: {x.calcular_area()} = {area}")
+        print(f"Circunferência do círculo: {x.calcular_cincunferencia()}= {circun} ")
 
 UI.main()
