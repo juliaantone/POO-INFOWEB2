@@ -34,90 +34,90 @@ class Circulo:
 
 class Viagem:
     def __init__(self):
-        self.__dist = 0
-        self.__tempo = 0
+        self.__d = 0
+        self.__t = 0
     def set_distancia(self, v):
-        if v >= 0: self.__dist = v
+        if v >= 0: self.__d = v
         else: raise ValueError()
     def set_tempo(self, v):
-        if v > 0: self.__tempo = v
+        if v > 0: self.__t = v
         else: raise ValueError()
     def get_distancia(self):
-        return self.__dist
+        return self.__d
     def get_tempo(self):
-        return self.__tempo
+        return self.__t
     def calc_velocidade(self):
-        return self.__dist / self.__tempo
+        return self.__d / self.__t
     
 
 class ContaBancaria:
     def __init__(self):
-        self.__titular = ""
-        self.__numero = 0
-        self.__saldo = 0
+        self.__t = ""
+        self.__n = 0
+        self.__s = 0
     def set_titular(self, nome):
-        self.__titular = nome
+        self.__t = nome
     def set_numero(self, num):
         if num > 0:
-            self.__numero = num
+            self.__n = num
         else:
             raise ValueError()
     def set_saldo(self, valor):
         if valor >= 0:
-            self.__saldo = valor
+            self.__s = valor
         else:
             raise ValueError()
     def get_titular(self):
-        return self.__titular
+        return self.__t
     def get_numero(self):
-        return self.__numero
+        return self.__n
     def get_saldo(self):
-        return self.__saldo
+        return self.__s
     def depositar(self, valor):
         if valor > 0:
-            self.__saldo += valor
+            self.__s += valor
         else:
             raise ValueError()
     def sacar(self, valor):
-        if valor > 0 and valor <= self.__saldo:
-            self.__saldo -= valor
+        if valor > 0 and valor <= self.__s:
+            self.__s -= valor
         else:
             raise ValueError()
     
 
 class Ingresso:
     def __init__(self):
-        self.__dia = ""
-        self.__hora = 0
+        self.__d = ""
+        self.__h = 0
     def set_dia(self, d):
-        self.__dia = d.lower()
+        self.__d = d.lower()
     def set_hora(self, h):
         if 0 <= h <= 23:
-            self.__hora = h
+            self.__h = h
         else:
             raise ValueError()
     def get_dia(self):
-        return self.__dia
+        return self.__d
     def get_hora(self):
-        return self.__hora
+        return self.__h
     def __valor_base(self):
-        if self.__dia in ["segunda", "terça", "terca", "quinta"]:
+        if self.__d in ["segunda", "terça", "terca", "quinta"]:
             return 16
-        elif self.__dia == "quarta":
+        elif self.__d == "quarta":
             return 8
-        elif self.__dia in ["sexta", "sábado", "sabado", "domingo"]:
+        elif self.__d in ["sexta", "sábado", "sabado", "domingo"]:
             return 20
         else:
             raise ValueError()
     def valor_inteira(self):
         valor = self.__valor_base()
-        if self.__dia == "quarta":
+        if self.__d == "quarta":
             return valor
-        if 17 <= self.__hora <= 23:
+        if 17 <= self.__h <= 23:
             valor *= 1.5
         return valor
     def valor_meia(self):
-        if self.__dia == "quarta":
+        if self.__d == "quarta":
             return 8
         return self.valor_inteira() / 2
     

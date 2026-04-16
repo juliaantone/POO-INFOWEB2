@@ -21,28 +21,23 @@ class ContaBancaria:
 titular = input("Digite o nome do titular: ")
 numero = input("Digite o número da conta: ")
 conta = ContaBancaria(titular, numero)
+
 while True:
     print("\n1 - Depositar")
     print("2 - Sacar")
     print("3 - Ver saldo")
     print("4 - Sair")
-
     opcao = input("Escolha uma opção: ")
-
     if opcao == "1":
         valor = float(input("Digite o valor para depósito: "))
         conta.depositar(valor)
-
     elif opcao == "2":
         valor = float(input("Digite o valor para saque: "))
         conta.sacar(valor)
-
     elif opcao == "3":
         conta.mostrar_saldo()
-
     elif opcao == "4":
         print("Encerrando...")
         break
-
     else:
         print("Opção inválida!")

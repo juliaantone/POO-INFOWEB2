@@ -2,7 +2,7 @@
 # Entidade
 class Triangulo:
     def __init__(self):
-        self.__b = 0            # Não parecem no diagrama
+        self.__b = 0            # Não aparecem no diagrama
         self.__h = 0
     def set_base(self, v):
         if v >= 0: self.__b = v
