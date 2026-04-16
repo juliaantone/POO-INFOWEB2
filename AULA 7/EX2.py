@@ -1,3 +1,4 @@
+# Incompleta
 # Entidade
 class Triangulo:
     def __init__(self):
@@ -26,9 +27,9 @@ class Circulo:
         else: raise ValueError()
     def get_raio(self):
         return self.__r
-    def calcular_area(self):
-        return math.pi * (self.__r ** 2)
-    def calcular_cincunferencia(self):
+    def calc_area(self):
+        return math.pi * self.__r ** 2
+    def calc_cincunferencia(self):
         return 2 * math.pi * self.__r
     
     
@@ -52,18 +53,19 @@ class UI:
     @staticmethod
     def triangulo():
         x = Triangulo()
-        x.set_base(float(input("Informe o valor da base: ")))
-        x.set_altura(float(input("Informe o valor da altura: ")))
+        x.set_base(float(input("INFORME A BASE: ")))
+        x.set_altura(float(input("INFORME A ALTURA: ")))
         area = x.calc_area()
-        print(f"Um triângulo com base {x.get_base()} e altura \ {x.get_altura()} tem área = {area}")
+        print(f"UM TRIÂNGULO DE BASE {x.get_base()} E ALTURA {x.get_altura()} TEM ÁREA: {area}")
 
     @staticmethod
     def circulo():
         x = Circulo()
-        x.set_raio(float(input("Informe o raio: ")))
-        area = x.calcular_area()
-        circun = x.calcular_cincunferencia()
-        print(f"Área do circulo: {x.calcular_area()} = {area}")
-        print(f"Circunferência do círculo: {x.calcular_cincunferencia()}= {circun} ")
+        x.set_raio(float(input("INFORME O RAIO: ")))
+        area = x.calc_area
+        circun = x.calc_cincunferencia
+        print(f"ÁREA DO CÍRCULO: {x.calc_area()} {area}")
+        print(f"CIRCUNFERÊNCIA: {x.calc_cincunferencia()} {circun}")
+
 
 UI.main()

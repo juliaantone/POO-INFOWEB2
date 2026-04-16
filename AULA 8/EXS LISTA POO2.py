@@ -28,6 +28,8 @@ class Circulo:
         return self.__r
     def calc_area(self):
         return math.pi * self.__r ** 2
+    def calc_cincunferencia(self):
+        return 2 * math.pi * self.__r
     
 
 class Viagem:
@@ -87,55 +89,36 @@ class Ingresso:
     def __init__(self):
         self.__dia = ""
         self.__hora = 0
-
-    # SETS
     def set_dia(self, d):
         self.__dia = d.lower()
-
     def set_hora(self, h):
         if 0 <= h <= 23:
             self.__hora = h
         else:
             raise ValueError()
-
-    # GETS
     def get_dia(self):
         return self.__dia
-
     def get_hora(self):
         return self.__hora
-
-    # VALOR BASE
     def __valor_base(self):
         if self.__dia in ["segunda", "terça", "terca", "quinta"]:
             return 16
         elif self.__dia == "quarta":
-            return 8  # já é meia
+            return 8
         elif self.__dia in ["sexta", "sábado", "sabado", "domingo"]:
             return 20
         else:
             raise ValueError()
-
-    # INTEIRA
     def valor_inteira(self):
         valor = self.__valor_base()
-
-        # quarta já é meia fixa
         if self.__dia == "quarta":
             return valor
-
-        # acréscimo de 50% das 17h até 23h
         if 17 <= self.__hora <= 23:
             valor *= 1.5
-
         return valor
-
-    # MEIA
     def valor_meia(self):
-        # quarta já é meia para todos
         if self.__dia == "quarta":
             return 8
-
         return self.valor_inteira() / 2
     
 
@@ -167,48 +150,45 @@ class UI:
     @staticmethod
     def triangulo():
         x = Triangulo()
-        x.set_base(float(input("Informe o valor da base: ")))
-        x.set_altura(float(input("Informe o valor da altura: ")))
+        x.set_base(float(input("INFORME A BASE: ")))
+        x.set_altura(float(input("INFORME A ALTURA: ")))
         area = x.calc_area()
-        print(f"Um triângulo com base {x.get_base()} e altura \ {x.get_altura()} tem área = {area}")
+        print(f"UM TRIÂNGULO DE BASE {x.get_base()} E ALTURA {x.get_altura()} TEM ÁREA: {area}")
 
     @staticmethod
     def circulo():
         x = Circulo()
-        x.set_raio(float(input("Informe o raio: ")))
-        print(f"Área do círculo = {x.calc_area()}")
+        x.set_raio(float(input("INFORME O RAIO: ")))
+        area = x.calc_area
+        circun = x.calc_cincunferencia
+        print(f"ÁREA DO CÍRCULO: {x.calc_area()} {area}")
+        print(f"CIRCUNFERÊNCIA: {x.calc_cincunferencia()} {circun}")
 
     @staticmethod
     def viagem():
         x = Viagem()
-        x.set_distancia(float(input("Distância: ")))
-        x.set_tempo(float(input("Tempo: ")))
-        print(f"Velocidade média = {x.calc_velocidade()}")
+        x.set_distancia(float(input("INFORME A DISTÂNCIA: ")))
+        x.set_tempo(float(input("TEMPO: ")))
+        print(f"VELOCIDADE MÉDIA: {x.calc_velocidade()}")
 
     @staticmethod
     def conta_bancaria():
         x = ContaBancaria()
-        
-        x.set_titular(input("Nome do titular: "))
-        x.set_numero(int(input("Número da conta: ")))
-        x.set_saldo(float(input("Saldo inicial: ")))
+        x.set_titular(input("NOME DO TITULAR DA CONTA: "))
+        x.set_numero(int(input("NÚMERO DA CONTA: ")))
+        x.set_saldo(float(input("SALDO INICIAL: ")))
+        x.depositar(float(input("VALOR PARA DEPÓSITO: ")))
+        x.sacar(float(input("VALOR PRA SAQUE: ")))
+        print(f"TITULAR: {x.get_titular()}")
+        print(f"NÚMERO DA CONTA: {x.get_numero()}")
+        print(f"SALDO FINAL: {x.get_saldo()}")
 
-        x.depositar(float(input("Valor para depósito: ")))
-        x.sacar(float(input("Valor para saque: ")))
-
-        print(f"Titular: {x.get_titular()}")
-        print(f"Número da conta: {x.get_numero()}")
-        print(f"Saldo final: {x.get_saldo()}")
-
-    
     @staticmethod
     def ingresso():
         x = Ingresso()
-        
-        x.set_dia(input("Dia da sessão: "))
-        x.set_hora(int(input("Hora (0-23): ")))
-
-        print(f"Inteira: R$ {x.valor_inteira()}")
-        print(f"Meia: R$ {x.valor_meia()}")
+        x.set_dia(input("DIA DA SESSÃO: "))
+        x.set_hora(int(input("HORÁRIO: ")))
+        print(f"INTERIA: R$ {x.valor_inteira()}")
+        print(f"MEIA: R$ {x.valor_meia()}")
 
 UI.main()
