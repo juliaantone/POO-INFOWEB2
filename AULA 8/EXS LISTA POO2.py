@@ -35,31 +35,46 @@ class Circulo:
 class Viagem:
     def __init__(self):
         self.__d = 0
-        self.__t = 0
-    def set_distancia(self, v):
-        if v >= 0: self.__d = v
-        else: raise ValueError()
-    def set_tempo(self, v):
-        if v > 0: self.__t = v
-        else: raise ValueError()
+        self.__h = 0
+        self.__m = 0
+    def set_distancia(self, d):
+        if d >= 0:
+            self.__d = d
+        else:
+            raise ValueError()
+    def set_horas(self, h):
+        if h >= 0:
+            self.__h = h
+        else:
+            raise ValueError()
+    def set_minutos(self, m):
+        if 0 <= m < 60:
+            self.__m = m
+        else:
+            raise ValueError()
     def get_distancia(self):
         return self.__d
-    def get_tempo(self):
-        return self.__t
+    def get_horas(self):
+        return self.__h
+    def get_minutos(self):
+        return self.__m
     def calc_velocidade(self):
-        return self.__d / self.__t
+        tempo_total = self.__h + (self.__m / 60)
+        if tempo_total == 0:
+            raise ValueError()
+        return self.__d / tempo_total
     
 
 class ContaBancaria:
     def __init__(self):
         self.__t = ""
-        self.__n = 0
-        self.__s = 0
+        self.__n = ""
+        self.__s = ""
     def set_titular(self, nome):
-        self.__t = nome
-    def set_numero(self, num):
-        if num > 0:
-            self.__n = num
+            self.__t = nome
+    def set_numero(self, numero):
+        if numero > 0:
+            self.__n = numero
         else:
             raise ValueError()
     def set_saldo(self, valor):
@@ -167,9 +182,11 @@ class UI:
     @staticmethod
     def viagem():
         x = Viagem()
-        x.set_distancia(float(input("INFORME A DISTÂNCIA: ")))
-        x.set_tempo(float(input("TEMPO: ")))
-        print(f"VELOCIDADE MÉDIA: {x.calc_velocidade()}")
+        x.set_distancia(float(input("DISTÂNCIA (KM): ")))
+        x.set_horas(int(input("HORAS: ")))
+        x.set_minutos(int(input("MINUTOS: ")))
+        velo = x.calc_velocidade
+        print(f"VELOCIDADE MÉDIA: {x.calc_velocidade():.2f} {velo} km/h")
 
     @staticmethod
     def conta_bancaria():
@@ -179,16 +196,21 @@ class UI:
         x.set_saldo(float(input("SALDO INICIAL: ")))
         x.depositar(float(input("VALOR PARA DEPÓSITO: ")))
         x.sacar(float(input("VALOR PRA SAQUE: ")))
-        print(f"TITULAR: {x.get_titular()}")
-        print(f"NÚMERO DA CONTA: {x.get_numero()}")
-        print(f"SALDO FINAL: {x.get_saldo()}")
+        titu = x.get_titular
+        num = x.get_numero
+        saldo = x.get_saldo
+        print(f"TITULAR: {x.get_titular()} {titu}")
+        print(f"NÚMERO DA CONTA: {x.get_numero()} {num}")
+        print(f"SALDO FINAL: {x.get_saldo()} {saldo}")
 
     @staticmethod
     def ingresso():
         x = Ingresso()
         x.set_dia(input("DIA DA SESSÃO: "))
         x.set_hora(int(input("HORÁRIO: ")))
-        print(f"INTERIA: R$ {x.valor_inteira()}")
-        print(f"MEIA: R$ {x.valor_meia()}")
+        inteira = x.valor_inteira
+        meia = x.valor_meia
+        print(f"INTERIA: R$ {x.valor_inteira()} {inteira}")
+        print(f"MEIA: R$ {x.valor_meia()} {meia}")
 
 UI.main()
