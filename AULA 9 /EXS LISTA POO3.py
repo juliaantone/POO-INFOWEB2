@@ -31,83 +31,63 @@ class Retangulo:
         else: raise ValueError()
     def get_base(self):
         return self.__b
-
     def get_altura(self):
         return self.__h
-
     def calc_area(self):
         return self.__b * self.__h
-
     def calc_diagonal(self):
         return math.sqrt(self.__b**2 + self.__h**2)
-
     def __str__(self):
-        return f"Retângulo: base={self.__b}, altura={self.__h}"
+        return f"Retângulo: minha base é {self.__b} e altura é {self.__h}"
 
 
 class Frete:
     def __init__(self, d, p):
         self.set_distancia(d)
         self.set_peso(p)
-
     def set_distancia(self, v):
         if v > 0: self.__d = v
-        else: raise ValueError("Distância deve ser positiva")
-
+        else: raise ValueError()
     def set_peso(self, v):
         if v > 0: self.__p = v
-        else: raise ValueError("Peso deve ser positivo")
-
+        else: raise ValueError()
     def get_distancia(self):
         return self.__d
-
     def get_peso(self):
         return self.__p
-
     def calc_frete(self):
         return 0.01 * self.__d * self.__p
-
     def __str__(self):
-        return f"Frete: distância={self.__d} km, peso={self.__p} kg"
+        return f"Frete: minha distância é {self.__d} km e o peso é {self.__p} kg"
+    
 
 class Equacao2Grau:
     def __init__(self, a, b, c):
         self.set_a(a)
         self.set_b(b)
         self.set_c(c)
-
     def set_a(self, v):
         if v != 0: self.__a = v
-        else: raise ValueError("A não pode ser zero")
-
+        else: raise ValueError()
     def set_b(self, v):
         self.__b = v
-
     def set_c(self, v):
         self.__c = v
-
     def get_a(self): return self.__a
     def get_b(self): return self.__b
     def get_c(self): return self.__c
-
     def delta(self):
         return self.__b**2 - 4*self.__a*self.__c
-
     def tem_raizes_reais(self):
         return self.delta() >= 0
-
     def raiz1(self):
         if self.tem_raizes_reais():
             return (-self.__b + math.sqrt(self.delta())) / (2*self.__a)
-
     def raiz2(self):
         if self.tem_raizes_reais():
             return (-self.__b - math.sqrt(self.delta())) / (2*self.__a)
-
     def __str__(self):
         return f"Equação: {self.__a}x² + {self.__b}x + {self.__c}"
-
-
 
 
 class UI:
@@ -116,7 +96,6 @@ class UI:
         op = 0
         while op != 0:
             op = UI.menu()
-
             if op == 1:
                 UI.triangulo()
             elif op == 2:
@@ -174,15 +153,9 @@ class UI:
         x = Equacao2Grau(a, b, c)
         print(x)
         print("Delta:", x.delta())
-
         if x.tem_raizes_reais():
             print("Raiz 1:", x.raiz1())
             print("Raiz 2:", x.raiz2())
         else:
             print("Não possui raízes reais")
-
-
-
-
-
 UI.main()
