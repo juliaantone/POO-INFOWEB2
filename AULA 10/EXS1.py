@@ -24,21 +24,20 @@ class Viagem:
     def consumo(self):
         return self.__distancia / self.__litros
     def __str__(self):
-        return (f"Destino: {self.__destino}\n"
-                f"Distância: {self.__distancia:.2f} km\n"
-                f"Combustível gasto: {self.__litros:.2f} L")
+        return (f"DESTINO: {self.__destino}\n"
+                f"DISTÂNCIA: {self.__distancia:.2f} km\n"
+                f"COMBUSTÍVEL: {self.__litros:.2f} L")
     
 
-class UI:
+class ViagemUI:
     @staticmethod
     def main():
         op = 0
         while op != 2:
-            op = UI.menu()
+            op = ViagemUI.menu()
             if op == 1: 
-                UI.calculo()
+                ViagemUI.calculo
                 
-
     @staticmethod
     def menu():
         print("ESCOLHA UMA OPÇÃO: ")
@@ -48,13 +47,12 @@ class UI:
         print("-" * 50)
         return int(input("ESCOLHA UMA OPÇÃO: "))
     
-
     @staticmethod
     def calculo():
-        des = input("Qual foi seu destino na viagem? ")
-        dis = float(input("Qual a distância percorrida em km? "))
-        l = float(input("Quantos litros de combustível foram gastos? "))
+        des = input("QUAL FOI O SEU DESTINO NA VIAGEM? ")
+        dis = float(input("QUALA DISTÂNCIA PERCORRIDA EM KM? "))
+        l = float(input("QUANTOS LITROSDE COMBUTÍVEL FOROM GASTOS? "))
         v = Viagem(des, dis, l)
         print(v)
 
-UI.main()
+ViagemUI.main()
