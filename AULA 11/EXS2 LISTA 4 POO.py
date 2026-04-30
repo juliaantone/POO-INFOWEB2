@@ -58,5 +58,19 @@ class ContatoUI:
         else:
             for x in cls.contatos: print(x)
 
+    @classmethod
+    def atualizar(cls):
+        pass
+
+    @classmethod
+    def excluir(cls):
+        pass
+
+    @classmethod
+    def pesquisar(cla):
+        pass
+
+    
+
     
 ContatoUI.main
