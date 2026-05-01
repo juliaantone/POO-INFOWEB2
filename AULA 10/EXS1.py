@@ -40,11 +40,9 @@ class ViagemUI:
                 
     @staticmethod
     def menu():
-        print("ESCOLHA UMA OPÇÃO: ")
         print("-" * 50)
         print("1. CALCULAR")
         print("2. FIM")
-        print("-" * 50)
         return int(input("ESCOLHA UMA OPÇÃO: "))
     
     @staticmethod

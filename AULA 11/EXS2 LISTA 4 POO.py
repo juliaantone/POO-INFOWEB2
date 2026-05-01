@@ -18,7 +18,7 @@ class Contato:
     def get_fone(self): return self.__fone
     def __str__(self):
         return f"{self.__id} - {self.__nome} - {self.__email} - {self.__fone}"
-
+        
 class ContatoUI:
     contatos = []   #atributo de class
     @staticmethod
@@ -31,10 +31,11 @@ class ContatoUI:
             if op == 3: ContatoUI.atualizar()
             if op == 4: ContatoUI.excluir()
             if op == 5: ContatoUI.pesquisar()
-            #if op == 6: ContatoUI.fim()
+
 
     @staticmethod
     def menu():
+        print("-" * 50)
         print("1- INSERIR")
         print("2- LISTAR")
         print("3- ATUALIZAR")
@@ -60,17 +61,40 @@ class ContatoUI:
 
     @classmethod
     def atualizar(cls):
-        pass
+        id = int(input("INFORME O ID DO CONTATO: "))
+        for c in cls.contatos:
+            if c.get_id() == id:
+                nome = input("NOVO NOME: ")
+                email = input("NOVO EMAIL: ")
+                fone = int(input("NOVO TELEFONE: "))
+                c.set_nome(nome)
+                c.set_email(email)
+                c.set_fone(fone)
+                print("CONTATO ATUALIZADO COM SUCESSO!")
+                return
+        print("CONTATO NÃO ENCONTRADO")
 
     @classmethod
     def excluir(cls):
-        pass
+        id = int(input("INFORME O ID DO CONTATO: "))
+        for c in cls.contatos:
+            if c.get_id() == id:
+                cls.contatos.remove(c)
+                print("CONTATO EXCLUÍDO COM SUCESSO!")
+                return
+        print("CONTATO NÃO ENCONTRADO")
 
     @classmethod
-    def pesquisar(cla):
-        pass
+    def pesquisar(cls):
+        iniciais = input("INFORME AS INICIAIS DO NOME: ").lower()
+        encontrados = []
+        for c in cls.contatos:
+            if c.get_nome().lower().startswith(iniciais):
+                encontrados.append(c)
+        if len(encontrados) == 0:
+            print("NENHUM CONTATO ENCONTRADO!")
+        else:
+            for c in encontrados:
+                print(c)
 
-    
-
-    
-ContatoUI.main
+ContatoUI.main()

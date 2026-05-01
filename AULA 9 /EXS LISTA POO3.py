@@ -107,8 +107,6 @@ class UI:
     
     def menu():
         print("-" * 50)
-        print("ESCOLHA UMA OPÇÃO: ")
-        print("-" * 50)
         print("1. TRIÂNGULO")
         print("2. RETÂNGULO ")
         print("3. FRETE ")
