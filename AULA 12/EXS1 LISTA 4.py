@@ -49,3 +49,23 @@ class Jogador:
         return self.__idTime
     def __str__(self):
         return f"{self.__id} - {self.__nome} - {self.__camisa} - {self.__idTime}" 
+    
+class FutebolUI:
+    times = []
+    jogadores = []
+
+    @staticmethod
+    def main():
+        op = 0
+        while op != 11:
+            op = FutebolUI.menu()
+
+            if op == 1: FutebolUI.inserir_time()
+            elif op == 2: FutebolUI.listar_time()
+            elif op == 3: FutebolUI.atualizar_time()
+            elif op == 4: FutebolUI.excluir_time()
+            elif op == 5: FutebolUI.inserir_jogador()
+            elif op == 6: FutebolUI.listar_jogador()
+            elif op == 7: FutebolUI.atualizar_jogador()
+            elif op == 8: FutebolUI.excluir_jogador()
+            elif op == 9: FutebolUI.listar_jogadores_do_time()
