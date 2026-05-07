@@ -48,5 +48,4 @@ class Jogador:
     def get_idTime(self):
         return self.__idTime
     def __str__(self):
-        return f"{self.__id} - {self.__nome} - {self.__camisa} - {self.__idTime}"
-    
+        return f"{self.__id} - {self.__nome} - {self.__camisa} - {self.__idTime}" 
