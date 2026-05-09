@@ -31,10 +31,10 @@ class BingoUI:
     @staticmethod
     def menu():
         print("-" * 50)
-        print("1 - INICIAR NOVO JOGO")
-        print("2 - SORTEAR")
-        print("3 - VER SORTEADOS")
-        print("4 - SAIR")
+        print("1- INICIAR NOVO JOGO")
+        print("2- SORTEAR")
+        print("3- VER SORTEADOS")
+        print("4- SAIR")
         return int(input("INFORME UMA OPÇÃO: "))
 
     @staticmethod

@@ -59,13 +59,72 @@ class FutebolUI:
         op = 0
         while op != 11:
             op = FutebolUI.menu()
-
             if op == 1: FutebolUI.inserir_time()
-            elif op == 2: FutebolUI.listar_time()
-            elif op == 3: FutebolUI.atualizar_time()
-            elif op == 4: FutebolUI.excluir_time()
-            elif op == 5: FutebolUI.inserir_jogador()
-            elif op == 6: FutebolUI.listar_jogador()
-            elif op == 7: FutebolUI.atualizar_jogador()
-            elif op == 8: FutebolUI.excluir_jogador()
-            elif op == 9: FutebolUI.listar_jogadores_do_time()
+            if op == 2: FutebolUI.listar_time()
+            if op == 3: FutebolUI.atualizar_time()
+            if op == 4: FutebolUI.excluir_time()
+            if op == 5: FutebolUI.inserir_jogador()
+            if op == 6: FutebolUI.listar_jogador()
+            if op == 7: FutebolUI.atualizar_jogador()
+            if op == 8: FutebolUI.excluir_jogador()
+            if op == 9: FutebolUI.listar_jogadores_do_time()
+
+    @staticmethod
+    def menu():
+        print("-" * 50)
+        print("1- INSERIR TIME")
+        print("2- LISTAR TIME")
+        print("3- ATUALIZAR TIME")
+        print("4- EXCLUIR TIME")
+        print("5- INSERIR JOGADOR")
+        print("6- LISTAR JOGADOR")
+        print("7- ATUALIZAR JOGADOR")
+        print("8- EXCLUIR JOGADOR")
+        print("9- LISTAR JOGADORES DO TIME")
+        print("10- TRANFERIR JOGADOR")
+        print("11- FIM")
+        return int(input("INFORME UMA OPÇÃO: "))
+
+    @classmethod
+    def inserir_time(cls):
+        id = int(input("INFORME O ID: "))
+        nome = input("INFORME O NOME: ")
+        estado = input("INFORME O ESTTADO: ")
+        x = Time(id, nome, estado)
+        cls.contatos.append(x)
+
+    @classmethod
+    def listar_time(cls):
+        if len(cls.times) == 0: print("NENHUM CONTATO CADASTRADO")
+        else:
+            for x in cls.times: print(x)
+
+    @classmethod
+    def listar_id(cls, id):
+        for x in cls.contatos:
+            if x.get_id() == id: return x 
+        return None
+
+    @classmethod
+    def atualizar_time(cls):
+        FutebolUI.listar()
+        id = int(input("INFORME O ID DO TIME A SER ATULIZADO: "))
+        x = FutebolUI.listar_id(id)
+        if x != None:
+            nome = input("NOVO NOME: ")
+            estado = input("NOVO ESTADO: ")
+            cls.times.remove(x)
+            x = Time(id, nome, estado)
+            cls.times.append(x)
+        else:
+            print("ESSE TIME NÃO EXISTE")
+
+    @classmethod
+    def excluir_time(cls):
+        FutebolUI.listar()
+        id = int(input("INFORME O ID DO TTIME: "))
+        x = FutebolUI.listar_id(id)
+        if x != None:
+            cls.times.remove(x)
+        else:
+            print("TIME NÃO ENCONTRADO")
