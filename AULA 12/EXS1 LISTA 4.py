@@ -29,13 +29,14 @@ class Jogador:
         self.set_camisa(camisa)
         self.set_idTime(idTime)
     def set_id(self, id):
-        if 0 > id < 99: raise ValueError()
+        if id < 0: raise ValueError()
         self.__id = id
     def set_nome(self, nome):
         if nome == "": raise ValueError()
         self.__nome = nome 
     def set_camisa(self, camisa):
-        if camisa == "": raise ValueError()
+        if camisa < 0: raise ValueError()
+        self.__camisa = camisa
     def set_idTime(self, idTime):
         if idTime < 0: raise ValueError()
         self.__idTime = idTime
@@ -68,6 +69,7 @@ class FutebolUI:
             if op == 7: FutebolUI.atualizar_jogador()
             if op == 8: FutebolUI.excluir_jogador()
             if op == 9: FutebolUI.listar_jogadores_do_time()
+            if op == 10: FutebolUI.transferir_jogador()
 
     @staticmethod
     def menu():
@@ -81,7 +83,7 @@ class FutebolUI:
         print("7- ATUALIZAR JOGADOR")
         print("8- EXCLUIR JOGADOR")
         print("9- LISTAR JOGADORES DO TIME")
-        print("10- TRANFERIR JOGADOR")
+        print("10- TRANSFERIR JOGADOR")
         print("11- FIM")
         return int(input("INFORME UMA OPÇÃO: "))
 
@@ -89,25 +91,25 @@ class FutebolUI:
     def inserir_time(cls):
         id = int(input("INFORME O ID: "))
         nome = input("INFORME O NOME: ")
-        estado = input("INFORME O ESTTADO: ")
+        estado = input("INFORME O ESTADO: ")
         x = Time(id, nome, estado)
-        cls.contatos.append(x)
+        cls.times.append(x)
 
     @classmethod
     def listar_time(cls):
-        if len(cls.times) == 0: print("NENHUM CONTATO CADASTRADO")
+        if len(cls.times) == 0: print("NENHUM TIME CADASTRADO")
         else:
             for x in cls.times: print(x)
 
     @classmethod
     def listar_id(cls, id):
-        for x in cls.contatos:
+        for x in cls.times:
             if x.get_id() == id: return x 
         return None
 
     @classmethod
     def atualizar_time(cls):
-        FutebolUI.listar()
+        FutebolUI.listar_time()
         id = int(input("INFORME O ID DO TIME A SER ATULIZADO: "))
         x = FutebolUI.listar_id(id)
         if x != None:
@@ -121,10 +123,86 @@ class FutebolUI:
 
     @classmethod
     def excluir_time(cls):
-        FutebolUI.listar()
-        id = int(input("INFORME O ID DO TTIME: "))
+        FutebolUI.listar_time()
+        id = int(input("INFORME O ID DO TIME: "))
         x = FutebolUI.listar_id(id)
         if x != None:
             cls.times.remove(x)
         else:
             print("TIME NÃO ENCONTRADO")
+
+    @classmethod
+    def inserir_jogador(cls):
+        id = int(input("INFORME O ID: "))
+        nome = input("INFORME O NOME: ")
+        camisa = int(input("INFORME A CAMISA: "))
+        idTime = int(input("INFORME O ID DO TIME: "))
+
+        x = Jogador(id, nome, camisa, idTime)
+        cls.jogadores.append(x)
+
+    @classmethod
+    def listar_jogador(cls):
+        if len(cls.jogadores) == 0:
+            print("NENHUM JOGADOR CADASTRADO")
+        else:
+            for x in cls.jogadores:
+                print(x)
+
+    @classmethod
+    def listar_id_jogador(cls, id):
+        for x in cls.jogadores:
+            if x.get_id() == id:
+                return x
+        return None
+
+    @classmethod
+    def atualizar_jogador(cls):
+        FutebolUI.listar_jogador()
+        id = int(input("INFORME O ID DO JOGADOR: "))
+        x = FutebolUI.listar_id_jogador(id)
+        if x != None:
+            nome = input("NOVO NOME: ")
+            camisa = int(input("NOVA CAMISA: "))
+            idTime = int(input("NOVO ID TIME: "))
+            cls.jogadores.remove(x)
+            x = Jogador(id, nome, camisa, idTime)
+            cls.jogadores.append(x)
+        else:
+            print("JOGADOR NÃO ENCONTRADO")
+
+    @classmethod
+    def excluir_jogador(cls):
+        FutebolUI.listar_jogador()
+        id = int(input("INFORME O ID DO JOGADOR: "))
+        x = FutebolUI.listar_id_jogador(id)
+        if x != None:
+            cls.jogadores.remove(x)
+        else:
+            print("JOGADOR NÃO ENCONTRADO")
+
+    @classmethod
+    def listar_jogadores_do_time(cls):
+        idTime = int(input("INFORME O ID DO TIME: "))
+        achou = False
+        for x in cls.jogadores:
+            if x.get_idTime() == idTime:
+                print(x)
+                achou = True
+        if achou == False:
+            print("NENHUM JOGADOR NESSE TIME")
+
+    @classmethod
+    def transferir_jogador(cls):
+        FutebolUI.listar_jogador()
+        id = int(input("INFORME O ID DO JOGADOR: "))
+        x = FutebolUI.listar_id_jogador(id)
+        if x != None:
+            novoTime = int(input("NOVO ID DO TIME: "))
+            x.set_idTime(novoTime)
+            print("JOGADOR TRANSFERIDO")
+        else:
+            print("JOGADOR NÃO ENCONTRADO")
+
+if __name__ == "__main__":
+    FutebolUI.main()
