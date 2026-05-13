@@ -9,7 +9,7 @@ print(z)
 
 print( "-" * 50)
 
-x = [23, 45, 67, 89]
+x = [23, 45, 42, 89]
 print(x)
 x.reverse
 print(x)
