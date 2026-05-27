@@ -28,7 +28,7 @@ class Treino:
 
 class TreinoUI:
     _lista = []
-    @staticmethod      # quando não tem acessa o atributo
+    @staticmethod      
     def main():
         print("1-INSERIR, 2-LISTAR, 3-ATUALIZAR, 4-EXCLUIR, 5-MAIS RÁPIDO 6-SAIR")
         return int(input("ESCOLHA UMA OPÇÃO: "))
@@ -50,28 +50,26 @@ class TreinoUI:
         distancia = input("INFORME A DISTÂNCIA: ")
         tempo = input("INFORME O TEMPO: ")
         x = Treino(id, data, distancia, tempo)
-        cls.__pacientes.append(x)
+        cls.__lista.append(x)
 
     @classmethod
     def listar(cls):
-        if len(cls.__pacientes) == 0: print("Nenhum paciente cadastrado")
+        if len(cls.__lista) == 0: print("Nenhum paciente cadastrado")
         else: 
-            for x in cls.__pacientes: print(x, x.idade())
+            for x in cls.__lista: print(x, x.idade())
 
     @classmethod
     def atualizar(cls):
-        for x in cls.__pacientes:
+        for x in cls.__lista:
             id = int(input("INFORME O ID DO PACIENTE A SER ATUALIZADO: "))
-            for x in cls.__pacientes:
+            for x in cls.__lista:
                 if x.get_id() == id:
-                    nome = input("NOVO NOME: ")
-                    cpf = input("NOVO CPF: ")
-                    telefone = input("NOVO CPF: ")
-                    nascimento = datetime.strptime(input("INFORME A NOVA DATA DE NASCIMENTO: "))
-                    x.set_nome(nome)
-                    x.set_cpf(cpf)
+                    data = input("INFORME A DATA: ")
+                    distancia = input("INFORME A DISTÂNCIA: ")
+                    tempo = input("INFORME O TEMPO: ")
+                    x.set_data(data)
+                    x.set_distancia(cpf)
                     x.set_telefone(telefone)
-                    x.set_nascimento(nascimento)
                     
     @classmethod
     def excluir(cls):
