@@ -59,6 +59,12 @@ class TreinoUI:
             for x in cls.__lista: print(x, x.idade())
 
     @classmethod
+    def listar_id(cls, id):
+        for x in cls.lista:
+            if x.get_id() == id: return x 
+        return None
+
+    @classmethod
     def atualizar(cls):
         for x in cls.__lista:
             id = int(input("INFORME O ID DO PACIENTE A SER ATUALIZADO: "))
@@ -68,28 +74,16 @@ class TreinoUI:
                     distancia = input("INFORME A DISTÂNCIA: ")
                     tempo = input("INFORME O TEMPO: ")
                     x.set_data(data)
-                    x.set_distancia(cpf)
-                    x.set_telefone(telefone)
+                    x.set_distancia(distancia)
+                    x.set_tempo(tempo)
                     
     @classmethod
     def excluir(cls):
-        for x in cls.__pacientes:
+        for x in cls.__lista:
             id = int(input("INFORME O ID: "))
-            for x in cls.__pacientes:
+            for x in cls.__listar:
                 if x.get_id() == id:
-                    cls.__pacientes.remove(x)
+                    cls.__listar.remove(x)
 
-    @classmethod
-    def pesquisar(cls):
-        s = input("INFORME AS INICIAIS DO NOME: ")
-        for x in cls.__pacientes:
-                if x.get_nome().startwith(s):
-                    print(x)
-
-    @classmethod
-    def anivesariantes(cls):
-        m = input("INFORME O MÊS PARA LISTAR ANIVERSARIANTE: ")
-        for x in cls.__pacientes:
-                if x.get_nascimento().month == m: print(x)
-
-PacienteUI.main()
+    
+TreinoUI.main()
