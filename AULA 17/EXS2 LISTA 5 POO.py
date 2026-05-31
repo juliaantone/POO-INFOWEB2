@@ -43,7 +43,7 @@ class Boleto:
     def get_data_pagamento(self): return self.__data_pagamento
     def get_valor_boleto(self): return self.__valor_botelo
     def get_situacao_pagamentos(self): return self.__situacao_pagamentos
-    # no diagrama
+    # NO DIAGRAMA 'get_situacao_pagamentos' ESTÁ COMO 'situacao'
     def get_situacao(self): return self.__situacao_pagamentos
     def __str__(self):
         s = f"Boeto: {self.__cod_barras} - Emissão {self.__data_emissao.strftime('%d/%m/%Y')}"
