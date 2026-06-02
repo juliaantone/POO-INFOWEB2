@@ -25,7 +25,7 @@ class Boleto:
         if emissao > datetime.now(): raise ValueError("Data não pode estar no futuro")
         self.__data_emissao = emissao
     def set_data_vencimento(self, venc):
-        if venc < datetime.now(): raise ValueError("Data não pode estar no passado")
+        #if venc < datetime.now(): raise ValueError("Data não pode estar no passado")
         self.__data_vencimento = venc
     def set_valor_boleto(self, valor):
         if valor < 0: raise ValueError("Valor não pode ser negativo")
@@ -46,10 +46,80 @@ class Boleto:
     # NO DIAGRAMA 'get_situacao_pagamentos' ESTÁ COMO 'situacao'
     def get_situacao(self): return self.__situacao_pagamentos
     def __str__(self):
-        s = f"Boeto: {self.__cod_barras} - Emissão {self.__data_emissao.strftime('%d/%m/%Y')}"
-        s += f"Vencimento: {self.__data_vencimento.strftime('%d/%m/%Y')}"
-        s += f"Valor Boleto R$: {self.__valor_botelo:.2f}"
-        s += f"Valor Pago R$: {self.__valor_pago:.2f}"
-        s += f"Pagamento: {self.__data_pagamento}"
-        s += f"{self.__situacao_pagamentos}"
+        s = f"BOLETO: {self.__cod_barras} - EMISSÃO {self.__data_emissao.strftime('%d/%m/%Y')}"
+        s += f"VENCIMENTO: {self.__data_vencimento.strftime('%d/%m/%Y')}\n"
+        s += f"VALOR DO BOLETO R$: {self.__valor_botelo:.2f}\n"
+        s += f"VALOR PAGO R$: {self.__valor_pago:.2f}\n"
+        if self.__data_pagamento != None:
+            s += f"DATA DE PAGAMENTO: {self.__data_pagamento.strftime('%d/%m/%Y')}\n"
+        s += f"SITUAÇÃO: {self.__situacao_pagamentos}"
         return s
+
+class BoletoUI:
+    __boletos = []
+    @staticmethod
+    def main():
+        op = 0
+        while op != 10:
+            if op == 1: BoletoUI.inserir()
+            if op == 2: BoletoUI.listar()
+            if op == 3: BoletoUI.atualizar()
+            if op == 4: BoletoUI.excluir()
+            if op == 5: BoletoUI.emaberto()
+            if op == 6: BoletoUI.pagos()
+            if op == 7: BoletoUI.avencer()
+            if op == 8: BoletoUI.vencidos()
+            if op == 9: BoletoUI.pagar()
+
+    @staticmethod
+    def manu():
+        print("-" * 30)
+        print("1-INSERIR, 2-LISTAR, 3-ATUALIZAR, 4-EXCLUIR")
+        print("5-BOLETOS EM ABERTO, 6-BOLETOS PAGOS")
+        print("7-BOLETOS A VENCER,  8-BOLETOS VENCIDOS")
+        print("9-PAGAR BOLETOS,     10-FIM")
+        print("-" * 30)
+        return int(input("ECOLHA UMA OPÇÃO: "))
+
+    @classmethod
+    def inserir(cls):
+        cod = input("INFORME O CÓDIGO COM 10 DÍGITO: ")
+        emissao = datetime.strptime(input("INFORME A DATA DE EMISSÃO dd/mm/aa"), "%d/%m/%Y")
+        venc = datetime.strptime(input("INFORME A DATA DE VENCIMENTO dd/mm/aa"), "%d/%m/%Y")
+        valor = float(input("INFORME O VALOR: "))
+        x = Boleto(cod, emissao, venc, valor)
+        cls.__boletos.append(x)
+
+    @classmethod
+    def listar(cls):
+        for x in cls.__boletos: print(x)
+
+    @classmethod
+    def atualizar(cls):
+        for x in cls.__boletos:
+            cod = int(input("INFORME O CÓDIGO DO BOLETO A SER ATUALIZADO: "))
+            for x in cls.__boletos:
+                if x.get_cod_barras() == cod:
+                    emissao = datetime.strptime(input("INFORME A DATA DE EMISSÃO dd/mm/aa"), "%d/%m/%Y")
+                    venc = datetime.strptime(input("INFORME A DATA DE VENCIMENTO dd/mm/aa"), "%d/%m/%Y")
+                    valor = float(input("INFORME O VALOR: "))
+                    situacao = float(input("INFORME A SITUAÇÃO DO BOLETO: "))
+                    x.set_data_emissao(emissao)
+                    x.set_data_vencimento(venc)
+                    x.set_valor_boleto(valor)
+                    x.set_situacao_pagamento(situacao)
+
+    @classmethod
+    def excluir(cls):
+       for x in cls.__boletos:
+            cod = int(input("INFORME O CÓDIGO: "))
+            for x in cls.__boletos:
+                if x.get_cod_barras() == cod:
+                    cls.__botelos.remove(x)
+
+    @classmethod
+    def vencidos(cls):
+        for x in cls.__boletos:
+            if x.get_situacao_pagamentos() == Pagamento.EM_ABERTO and \
+            x.get_data_venciemento() < datetime.now(): print(x)
+
