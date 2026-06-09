@@ -57,9 +57,7 @@ class TreinoUI:
 
     @classmethod
     def listar(cls):
-        if len(cls.__lista) == 0: print("Nenhum paciente cadastrado")
-        else: 
-            for x in cls.__lista: print(x)
+        for x in cls.__lista: print(x)
 
     @classmethod
     def listar_id(cls, id):
