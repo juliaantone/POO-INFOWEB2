@@ -35,8 +35,8 @@ class TreinoUI:
     def main():
         print("1-INSERIR, 2-LISTAR, 3-ATUALIZAR, 4-EXCLUIR, 5-MAIS RÁPIDO 6-SAIR")
         return int(input("ESCOLHA UMA OPÇÃO: "))
+    
     @staticmethod
-
     def menu():
         op = 0
         while op != 6:
@@ -45,8 +45,6 @@ class TreinoUI:
             if op == 3: TreinoUI.atualizar()
             if op == 4: TreinoUI.excluir()
             if op == 5: TreinoUI.maisrapido()
-
-
 
     @classmethod
     def inserir(cls):
