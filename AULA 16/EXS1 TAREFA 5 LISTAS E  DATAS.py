@@ -89,14 +89,11 @@ class TreinoUI:
     @classmethod
     def maisrapido(cls):
         if len(cls.__lista) == 0:
-            print("Nenhum treino cadastrado")
             return
         rapido = cls.__lista[0]
         for x in cls.__lista:
             if x.pace() < rapido.pace():
                 rapido = x
-        print("Treino mais rápido:")
         print(rapido)
 
-    
 TreinoUI.main()
