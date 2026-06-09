@@ -13,10 +13,13 @@ class Treino:
         if data > datetime.now() : raise ValueError("Data não pode ser no futuro")
         self.__data = data
     def set_distancia(self, distancia):
-        if distancia > 0: raise ValueError("A distância deve ser positiva")
+        if distancia <= 0: raise ValueError("A distância deve ser positiva")
         self.__distancia = distancia 
     def set_tempo(self, tempo):
         if tempo < timedelta(0): raise ValueError("O tempo deve ser positivo")
+        self.__tempo = tempo
+    def pace(self):
+        return self.__tempo / self.__distancia
     def get_id(self): return self.__id
     def get_data(self): return self.__data
     def get_distancia(self): return self.__distancia
@@ -25,14 +28,15 @@ class Treino:
         return f"{self.__id} - {self.__data} - {self.__distancia} - {self.__tempo}"
 
 
-
 class TreinoUI:
-    _lista = []
+    __lista = []
+
     @staticmethod      
     def main():
         print("1-INSERIR, 2-LISTAR, 3-ATUALIZAR, 4-EXCLUIR, 5-MAIS RÁPIDO 6-SAIR")
         return int(input("ESCOLHA UMA OPÇÃO: "))
     @staticmethod
+
     def menu():
         op = 0
         while op != 6:
@@ -42,12 +46,13 @@ class TreinoUI:
             if op == 4: TreinoUI.excluir()
             if op == 5: TreinoUI.maisrapido()
 
-            
+
+
     @classmethod
     def inserir(cls):
         id = int(input("INFORME O ID: "))
-        data = input("INFORME A DATA: ")
-        distancia = input("INFORME A DISTÂNCIA: ")
+        data = datetime.strptime(input("INFORME A DATA: "), '%d/%m/%Y')
+        distancia = float(input("INFORME A DISTÂNCIA: "))
         tempo = input("INFORME O TEMPO: ")
         x = Treino(id, data, distancia, tempo)
         cls.__lista.append(x)
@@ -56,11 +61,11 @@ class TreinoUI:
     def listar(cls):
         if len(cls.__lista) == 0: print("Nenhum paciente cadastrado")
         else: 
-            for x in cls.__lista: print(x, x.idade())
+            for x in cls.__lista: print(x)
 
     @classmethod
     def listar_id(cls, id):
-        for x in cls.lista:
+        for x in cls.__lista:
             if x.get_id() == id: return x 
         return None
 
@@ -81,9 +86,21 @@ class TreinoUI:
     def excluir(cls):
         for x in cls.__lista:
             id = int(input("INFORME O ID: "))
-            for x in cls.__listar:
+            for x in cls.__lista:
                 if x.get_id() == id:
-                    cls.__listar.remove(x)
+                    cls.__lista.remove(x)
+    
+    @classmethod
+    def maisrapido(cls):
+        if len(cls.__lista) == 0:
+            print("Nenhum treino cadastrado")
+            return
+        rapido = cls.__lista[0]
+        for x in cls.__lista:
+            if x.pace() < rapido.pace():
+                rapido = x
+        print("Treino mais rápido:")
+        print(rapido)
 
     
 TreinoUI.main()

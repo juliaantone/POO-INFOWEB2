@@ -6,7 +6,7 @@ class Pagamento(Enum):
     PAGO_PARCIAL = 2
     PAGO = 3
 
-class Boleto:
+class Boleto:   
     def __init__(self, cod, emissao, venc, valor):
         # ATRIBUTOS QUE SERÃO VELIDADOS
         self.set_cod_barras(cod)
@@ -103,13 +103,12 @@ class BoletoUI:
                     emissao = datetime.strptime(input("INFORME A DATA DE EMISSÃO dd/mm/aa"), "%d/%m/%Y")
                     venc = datetime.strptime(input("INFORME A DATA DE VENCIMENTO dd/mm/aa"), "%d/%m/%Y")
                     valor = float(input("INFORME O VALOR: "))
-                    situacao = float(input("INFORME A SITUAÇÃO DO BOLETO: "))
                     x.set_data_emissao(emissao)
                     x.set_data_vencimento(venc)
                     x.set_valor_boleto(valor)
 
     @classmethod
-    def excluir(cls):
+    def excluir(cls):  
        for x in cls.__boletos:
             cod = int(input("INFORME O CÓDIGO: "))
             for x in cls.__boletos:
@@ -119,20 +118,19 @@ class BoletoUI:
     @classmethod
     def emaberto(cls):
         for x in cls.__boletos:
-            if x.get_situacao() == Pagamento.EM_ABERTO:
+            if x.get_situacao_pagamentos() == Pagamento.EM_ABERTO:
                 print(x)
 
     @classmethod
     def pagos(cls):
         for x in cls.__boletos:
-            if x.get_situacao() != Pagamento.EM_ABERTO:
+            if x.get_situacao_pagamentos() != Pagamento.EM_ABERTO:
                 print(x)
 
     @classmethod
     def avencer(cls):
         for x in cls.__boletos:
-            if x.get_situacao() == Pagamento.EM_ABERTO and \
-            x.get_data_vencimento() >= datetime.now(): print(x)
+            if x.get_situacao_pagamentos() == Pagamento.EM_ABERTO and x.get_data_vencimento() >= datetime.now(): print(x)
 
     @classmethod
     def pagar(cls):
@@ -148,7 +146,6 @@ class BoletoUI:
     @classmethod
     def vencidos(cls):
         for x in cls.__boletos:
-            if x.get_situacao_pagamentos() == Pagamento.EM_ABERTO and \
-            x.get_data_vencimento() < datetime.now(): print(x)
+            if x.get_situacao_pagamentos() == Pagamento.EM_ABERTO and x.get_data_vencimento() < datetime.now(): print(x)
 
 BoletoUI.main()
