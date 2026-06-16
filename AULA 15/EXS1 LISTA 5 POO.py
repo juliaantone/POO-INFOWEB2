@@ -49,7 +49,7 @@ class PacienteUI:
     @staticmethod
     def menu():
         op = 0
-        while op != 6:
+        while op != 7:
             if op == 1: PacienteUI.inserir()
             if op == 2: PacienteUI.listar()
             if op == 3: PacienteUI.atualizar()
@@ -69,9 +69,7 @@ class PacienteUI:
 
     @classmethod
     def listar(cls):
-        if len(cls.__pacientes) == 0: print("Nenhum paciente cadastrado")
-        else: 
-            for x in cls.__pacientes: print(x, x.idade())
+       for x in cls.__pacientes: print (x)
 
     @classmethod
     def atualizar(cls):
