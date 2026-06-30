@@ -100,15 +100,73 @@ class JogosUI:
     
     @classmethod
     def inserir(cls):
-        id = input("INFORME O ID: ")
-        nome = input("INFORME ")
-        valor = float(input("INFORME O VALOR: "))
-        x = Jogo()
-        cls.__jogos.append(x)
+        id = int(input("ID do jogo: "))
+        nome1 = input("País 1: ")
+        sigla1 = input("Sigla: ")
+        grupo1 = Grupo[input("Grupo(A-L): ").upper()]
+        pais1 = Pais(1, nome1, sigla1, grupo1)
+
+        nome2 = input("País 2: ")
+        sigla2 = input("Sigla: ")
+        grupo2 = Grupo[input("Grupo(A-L): ").upper()]
+        pais2 = Pais(2, nome2, sigla2, grupo2)
+
+        gols1 = int(input("Gols país 1: "))
+        gols2 = int(input("Gols país 2: "))
+
+        fase = Fase[input("Fase: ").upper()]
+        data = input("Data e hora (dd/mm/aaaa hh:mm): ")
+        data_hora = datetime.strptime(data,"%d/%m/%Y %H:%M")
+
+        jogo = Jogo(
+            id,
+            pais1,
+            pais2,
+            gols1,
+            gols2,
+            fase,
+            data_hora
+        )
+        cls.__jogos.append(jogo)
+
 
     @classmethod
-    def listar(self):
-        pass
+    def listar(cls):
+        for jogo in cls.__jogos:
+            print(jogo)
+            print("-" * 30)
+
+    @classmethod
+    def atualizar(cls):
+        id = int(input("Informe o ID do jogo: "))
+
+        for jogo in cls.__jogos:
+            if jogo.get_id() == id:
+                gols1 = int(input("Novo gol país 1: "))
+                gols2 = int(input("Novo gol país 2: "))
+
+                jogo.set_gols1(gols1)
+                jogo.set_gols2(gols2)
+
+                print("Atualizado!")
+                return
+
+        print("Jogo não encontrado")
+
+    @classmethod
+    def excluir(cls):
+        id = int(input("Informe o ID do jogo: "))
+
+        for jogo in cls.__jogos:
+            if jogo.get_id() == id:
+                cls.__jogos.remove(jogo)
+                print("Removido!")
+                return
+
+        print("Jogo não encontrado")
+
+
+JogosUI.main()
 
 
     
