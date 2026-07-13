@@ -7,7 +7,17 @@ class ServicoDAO:
         self.__objetos = []
         self.__abrir()
 
+    #def inserir(self, obj):
+        #self.__objetos.append(obj)
+        #self.__salvar()
+
     def inserir(self, obj):
+        if len(self.__objetos) == 0:
+            id = 1
+        else:
+            id = max(servico.get_id() for servico in self.__objetos) + 1
+
+        obj.set_id(id)
         self.__objetos.append(obj)
         self.__salvar()
 
@@ -19,6 +29,13 @@ class ServicoDAO:
             if obj.get_id() == id: return obj
         return None
 
+    def listar_descricao(self, iniciais):
+        lista = []
+        for obj in self.__objetos:
+            if obj.get_descricao().lower().startswith(iniciais.lower()):
+                lista.append(obj)
+        return lista
+    
     def atualizar(self, obj):
         aux = self.listar_id(obj.get_id())
         if aux != None:
@@ -48,4 +65,5 @@ class ServicoDAO:
         arquivo = open(self.__arquivo, mode = "w")
         json.dump(self.__objetos, arquivo, default = Servico.to_json, indent = 2)
         arquivo.close()
+
         
