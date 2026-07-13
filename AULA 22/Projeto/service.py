@@ -2,11 +2,13 @@ from models.cliente import Cliente         # entidade
 from models.clientedao import ClienteDAO   # persistência
 from models.servico import Servico
 from models.servicodao import ServicoDAO
+from models.profissional import Profissional
+from models.profissionaldao import ProfissionalDAO
 
 class Service:
     @staticmethod
-    def cliente_inserir(nome, email, fone):
-        obj = Cliente(0, nome, email, fone)
+    def cliente_inserir(nome, email, fone, senha):
+        obj = Cliente(0, nome, email, fone, senha)
         ClienteDAO().inserir(obj)
     #def cliente_inserir(id, nome, email, fone):
         #obj = Cliente(id, nome, email, fone)
@@ -21,8 +23,8 @@ class Service:
     def cliente_listar_nome(iniciais):
         return ClienteDAO().listar_nome(iniciais)
     @staticmethod
-    def cliente_atualizar(id, nome, email, fone):
-        obj = Cliente(id, nome, email, fone)
+    def cliente_atualizar(id, nome, email, fone, senha):
+        obj = Cliente(id, nome, email, fone, senha)
         ClienteDAO().atualizar(obj)
     @staticmethod
     def cliente_excluir(id):
@@ -52,3 +54,25 @@ class Service:
     @staticmethod
     def servico_excluir(id):
         ServicoDAO().excluir(id)
+
+
+    @staticmethod
+    def profissional_inserir(nome, email, senha, especialidade):
+        obj = Profissional(0, nome, email, senha, especialidade)
+        ProfissionalDAO().inserir(obj)
+    @staticmethod
+    def profissional_listar():
+        return ProfissionalDAO().listar()
+    @staticmethod
+    def profissional_listar_nome(iniciais):
+        return ProfissionalDAO().listar_nome(iniciais)
+    @staticmethod
+    def profissional_listar_id(id):
+        return ProfissionalDAO().listar_id(id)
+    @staticmethod
+    def profissional_atualizar(id, nome, email, senha, especialidade):
+        obj = Profissional(id, nome, email, senha, especialidade)
+        ProfissionalDAO().atualizar(obj)
+    @staticmethod
+    def profissional_excluir(id):
+        ProfissionalDAO().excluir(id)
