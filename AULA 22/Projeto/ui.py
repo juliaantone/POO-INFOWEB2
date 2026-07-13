@@ -1,19 +1,28 @@
-import Service
+from service import Service
 
 class UI:
     @staticmethod
     def main():
         op = 0
         while op != 9:
-            op = UI. menu()
+            op = UI.menu()
             if op == 1: UI.cliente_inserir()
             if op == 2: UI.cliente_listar()
             if op == 3: UI.cliente_atualizar()
             if op == 4: UI.cliente_excluir()
+            if op == 5: UI.servico_inserir()
+            if op == 6: UI.servico_listar()
+            if op == 7: UI.servico_atualizar()
+            if op == 8: UI.servico_excluir()
 
     @staticmethod
     def menu():
-        print("1-Inserir, 2-Listar, 3-Atualizar, 4-Excluir, 9-Fim")
+        print("----------- Cadastro de Clientes ----------")
+        print("1-Inserir, 2-Listar, 3-Atualizar, 4-Excluir")
+        print("----------- Cadastro de Serviços ----------")
+        print("5-Inserir, 6-Listar, 7-Atualizar, 8-Excluir")
+        print("----------- Outras opções -----------------")
+        print("9-Fim")
         return int(input("Informe uma opção: "))
 
     @staticmethod
@@ -42,5 +51,30 @@ class UI:
         for obj in Service().cliente_listar(): print(obj)
         id = int(input("Informe o id do cliente a ser excluído: "))
         Service.cliente_excluir(id)
+
+    @staticmethod
+    def servico_inserir():
+        id = int(input("Informe o id: "))
+        descricao = input("Informe a descrição: ")
+        valor = float(input("Informe o valor: "))
+        Service.servico_inserir(id, descricao, valor)
+
+    @staticmethod
+    def servico_listar():
+        for obj in Service.servico_listar(): print(obj)
+
+    @staticmethod
+    def servico_atualizar():
+        for obj in Service().servico_listar(): print(obj)
+        id = int(input("Informe o id do serviço a ser atualizado: "))
+        descricao = input("Informe a nova descrição: ")
+        valor = float(input("Informe o novo valor: "))
+        Service.servico_atualizar(id, descricao, valor)
+
+    @staticmethod
+    def servico_excluir():
+        for obj in Service().servico_listar(): print(obj)
+        id = int(input("Informe o id do serviço a ser excluído: "))
+        Service.servico_excluir(id)
 
 UI.main()
