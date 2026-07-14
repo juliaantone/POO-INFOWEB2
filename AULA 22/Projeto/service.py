@@ -3,7 +3,7 @@ from models.clientedao import ClienteDAO   # persistência
 from models.servico import Servico
 from models.servicodao import ServicoDAO
 from models.profissional import Profissional
-from models.profissionaldao import ProfissionalDAO
+from models.profissionaldao import ProfissionalDAO #não pode fazer import ui
 
 class Service:
     @staticmethod

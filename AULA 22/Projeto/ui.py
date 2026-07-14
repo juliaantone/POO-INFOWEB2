@@ -1,4 +1,4 @@
-from service import Service
+from service import Service #não pode fazer import dao
 
 class UI:
     @staticmethod
@@ -30,7 +30,9 @@ class UI:
         print("6-Inserir, 7-Listar, 8-Atualizar, 9-Excluir, 10-Pesquisar serviçopor descrição")
         print("-----------------------------Cadastro de Profissionais------------------------")
         print("11-Inserir profissional, 12-Listar profissionais, 13-Pesquisar profissional,  ")
+        print("------------------------------------------------------------------------------")
         print("14-Atualizar profissional15, 15-Excluir profissional, 16-Fim"                  )
+        print("------------------------------------------------------------------------------")
         return int(input("Informe uma opção: "))
 
     @staticmethod
