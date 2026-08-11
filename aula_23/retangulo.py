@@ -10,7 +10,3 @@ class Retangulo:
         return self.__b * self.__h
     def calc_diagonal(self):
         return math.sqrt(self.__b ** 2 + self.__h ** 2)
-    
-
-
-    
