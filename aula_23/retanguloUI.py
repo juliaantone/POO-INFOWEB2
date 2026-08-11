@@ -1,4 +1,4 @@
-import streamlitas as st
+import streamlit as st
 from retangulo import Retangulo
 
 class RetanguloUI:

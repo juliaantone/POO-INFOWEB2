@@ -1,4 +1,4 @@
-import streamlit as st
+
 from retanguloUI import RetanguloUI
 
 #st.header("POO EM PYTHON COM STREAMLIT")
