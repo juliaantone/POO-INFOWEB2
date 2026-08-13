@@ -7,4 +7,4 @@ from pacienteUI import PacienteUI
    # st.write("BEM-VINDO AO STREAMLIT")
 
 #RetanguloUI.main
-PacienteUI.main
+PacienteUI.main()
