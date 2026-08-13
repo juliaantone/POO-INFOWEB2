@@ -12,5 +12,5 @@ class PacienteUI:
             fone = st.text_input("INFORME O TELEFONE")
             if st.button("IDADE"):
                 x = Paciente(nome, cpf, nasc, fone)
-                st.whire(x.idade())
+                st.wrire(x.idade())
                 
