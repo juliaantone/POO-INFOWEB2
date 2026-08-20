@@ -29,6 +29,23 @@ class ManterclienteUI:
             time.sleep(2)
             st.rerun()
     def atualizar():
-            pass
+        clientes = Service.cliente_listar()
+        if len(clientes) == 0: st.write("NENHUM CLIENTE CADASTRADO")
+        else:
+            op = st.selectbox("ATUALIZAÇÃO DE CLIENTE", clientes)
+            nome = st.text_input("NOVO NOME", op.get_nome())
+            email = st.text_input("NOVO E-MAIL", op.get_email())
+            fone = st.text_input("NOVO TELEFONE", op.get_fone())
+            if st.button("ATUALIZAR"):
+                id = op.get_id()
+                Service.cliente_atualizar(id, nome, email, fone)
+                st.success("CLIENTE CADSTRADO COM SUCESSO")
     def excluir():
-            pass
+        clientes = Service.cliente_listar()
+        if len(clientes) == 0: st.write("Nenhum cliente cadastrado")
+        else:
+            op = st.selectbox("Exclusão de Clientes", clientes)
+            if st.button("Excluir"):
+                id = op.get_id()
+                Service.cliente_excluir(id) 
+                st.success("Cliente excluído com sucesso")
