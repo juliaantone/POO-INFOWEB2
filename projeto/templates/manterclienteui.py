@@ -20,7 +20,14 @@ class ManterclienteUI:
             df = pd.DataFrame(list_dic)
             st.dataframe(df)
     def inserir():
-            pass
+        nome = st.text_input("INFORME O NOME")
+        email = st.text_input("INFORME O E-MAIL")
+        fone = st.text_input("INFORM O TELEFONE")
+        if st.button("INSERIR"):
+            Service.cliente_inserir(nome, email, fone)
+            st.success("CLIENTE INSERIDO COM SUCESSO")
+            time.sleep(2)
+            st.rerun()
     def atualizar():
             pass
     def excluir():
