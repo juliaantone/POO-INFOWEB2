@@ -42,10 +42,10 @@ class ManterclienteUI:
                 st.success("CLIENTE CADSTRADO COM SUCESSO")
     def excluir():
         clientes = Service.cliente_listar()
-        if len(clientes) == 0: st.write("Nenhum cliente cadastrado")
+        if len(clientes) == 0: st.write("NENHUM CLIENTE CADASTRADO")
         else:
-            op = st.selectbox("Exclusão de Clientes", clientes)
-            if st.button("Excluir"):
+            op = st.selectbox("EXCLUSÃO DE CLIENTES", clientes)
+            if st.button("EXCLUIR"):
                 id = op.get_id()
                 Service.cliente_excluir(id) 
-                st.success("Cliente excluído com sucesso")
+                st.success("CLIENTE EXCLUÍDO COM SUCESSO")
