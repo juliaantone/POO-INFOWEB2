@@ -7,11 +7,11 @@ class ManterservicoUI:
     def main():
         st.header("CADASTRO DE SERVIÇOS")
         tab5, tab6, tab7, tab8 = st.tabs(["LISTAR", "INSERIR", "ATUALIZAR", "EXCLUIR"])
-        with tab5: ManterservicoUI.listar()
-        with tab6:ManterservicoUI.inserir()
-        with tab7:ManterservicoUI.atualizar()
-        with tab8: ManterservicoUI.excluir()
-    def listar():
+        with tab5: ManterservicoUI.listarser()
+        with tab6:ManterservicoUI.inserirser()
+        with tab7:ManterservicoUI.atualizarser()
+        with tab8: ManterservicoUI.excluirser()
+    def listarser():
         servicos = Service.servico_listar()
         if len(servicos) == 0: st.write("NENHUM SERVIÇO CADASTRADO")
         else:
@@ -19,14 +19,14 @@ class ManterservicoUI:
             for obj in servicos: list_dic.append(obj.to_json())
             df = pd.DataFrame(list_dic)
             st.dataframe(df)
-    def inserir():
+    def inserirser():
         descricao = st.text_input("INFORME A DESCRIÇÃO")
         valor = st.number_input("INFORME O VALOR", min_value=0.0, step=0.01)
         if st.button("INSERIR"): Service.servico_inserir(descricao, valor)
         st.success("SERVIÇO INSERIDO COM SUCESSO")
         time.sleep(2)
         st.rerun()
-    def atualizar():
+    def atualizarser():
         servicos = Service.servico_listar()
         if len(servicos) == 0: st.write("NENHUM SERVIÇO CADASTRADO")
         else:
@@ -36,7 +36,7 @@ class ManterservicoUI:
             if st.button("ATUALIZAR"): id = op.get_id()
             Service.servico_atualizar( id, descricao, valor)
             st.success("SERVIÇO ATUALIZADO COM SUCESSO")
-    def excluir():
+    def excluirser():
         servicos = Service.servico_listar()
         if len(servicos) == 0:
             st.write("NENHUM SERVIÇO CADASTRADO")
