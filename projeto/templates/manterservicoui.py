@@ -6,11 +6,11 @@ from service import Service
 class ManterservicoUI:
     def main():
         st.header("CADASTRO DE SERVIÇOS")
-        tab1, tab2, tab3, tab4 = st.tabs(["LISTAR", "INSERIR", "ATUALIZAR", "EXCLUIR"])
-        with tab1: ManterservicoUI.listar()
-        with tab2:ManterservicoUI.inserir()
-        with tab3:ManterservicoUI.atualizar()
-        with tab4: ManterservicoUI.excluir()
+        tab5, tab6, tab7, tab8 = st.tabs(["LISTAR", "INSERIR", "ATUALIZAR", "EXCLUIR"])
+        with tab5: ManterservicoUI.listar()
+        with tab6:ManterservicoUI.inserir()
+        with tab7:ManterservicoUI.atualizar()
+        with tab8: ManterservicoUI.excluir()
     def listar():
         servicos = Service.servico_listar()
         if len(servicos) == 0: st.write("NENHUM SERVIÇO CADASTRADO")
