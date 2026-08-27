@@ -13,7 +13,7 @@ class ManterclienteUI:
         with tab4: ManterclienteUI.excluir()
     def listar():
         clientes = Service.cliente_listar()
-        if len(clientes) == 0: st.write("NENHUM CLENTE CADASTRADO")
+        if len(clientes) == 0: st.write("NENHUM CLIENTE CADASTRADO")
         else: 
             list_dic = [] 
             for obj in clientes: list_dic.append(obj.to_json())
