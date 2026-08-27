@@ -2,6 +2,8 @@ from models.cliente import Cliente
 from models.clientedao import ClienteDAO
 from models.servico import Servico
 from models.servicodao import ServicoDAO
+from models.horarios import Horario
+from models.horariosdao import HorariosDAO
 
 class Service:
     @staticmethod
@@ -40,3 +42,29 @@ class Service:
     @staticmethod
     def servico_excluir(id):
         ServicoDAO().excluir(id)
+
+    @staticmethod
+    def horario_inserir(data, confirmado, id_cliente, id_servico):
+        c = Horario(0, data)
+        c.set_confirmado(confirmado)
+        c.set_id_cliente(id_cliente)
+        c.set_id_servico(id_servico)
+        HorariosDAO().inserir(c)
+    @staticmethod
+    def horario_listar():
+        return HorariosDAO().listar()
+    @staticmethod
+    def horario_listar_id(id):
+        return HorariosDAO().listar_id(id)
+    @staticmethod
+    def horario_inserir(id, data, confirmado, id_cliente, id_servico):
+        c = Horario(id, data)
+        c.set_confirmado(confirmado)
+        c.set_id_cliente(id_cliente)
+        c.set_id_servico(id_servico)
+        HorariosDAO().atualizar(c)
+    @staticmethod
+    def horario_excluir(id):
+        HorariosDAO().excluir(id)
+    
+    
