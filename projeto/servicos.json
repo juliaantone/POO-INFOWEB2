@@ -1,47 +1,52 @@
 [
   {
-    "id": 1,
-    "descricao": "corte",
-    "valor": 0.73
-  },
-  {
     "id": 2,
-    "descricao": "corte",
-    "valor": 0.73
+    "descricao": "MANICURE",
+    "valor": 40.0
   },
   {
     "id": 3,
-    "descricao": "corte",
-    "valor": 0.73
+    "descricao": "PINTURA DE CABELO",
+    "valor": 30.0
   },
   {
     "id": 4,
-    "descricao": "corte",
-    "valor": 0.73
+    "descricao": "SPA",
+    "valor": 100.0
   },
   {
     "id": 5,
-    "descricao": "corte",
-    "valor": 0.73
+    "descricao": "LIMPEZA DE PELE",
+    "valor": 120.0
   },
   {
     "id": 6,
-    "descricao": "corte",
-    "valor": 0.73
+    "descricao": "HIDRATA\u00c7\u00c3O",
+    "valor": 60.0
   },
   {
     "id": 7,
-    "descricao": "corte",
-    "valor": 0.73
+    "descricao": "PROGRESSIVA",
+    "valor": 140.0
   },
   {
     "id": 8,
-    "descricao": "CORTE",
-    "valor": 0.22
+    "descricao": "RELAXAMENTO",
+    "valor": 120.0
+  },
+  {
+    "id": 1,
+    "descricao": "CORTE MASC",
+    "valor": 40.0
   },
   {
     "id": 9,
-    "descricao": "CORTE",
-    "valor": 0.22
+    "descricao": "CORTE FEM",
+    "valor": 50.0
+  },
+  {
+    "id": 10,
+    "descricao": "MASSAGEM",
+    "valor": 70.0
   }
 ]
