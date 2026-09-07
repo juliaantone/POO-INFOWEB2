@@ -33,5 +33,15 @@
     "id": 7,
     "descricao": "corte",
     "valor": 0.73
+  },
+  {
+    "id": 8,
+    "descricao": "CORTE",
+    "valor": 0.22
+  },
+  {
+    "id": 9,
+    "descricao": "CORTE",
+    "valor": 0.22
   }
 ]

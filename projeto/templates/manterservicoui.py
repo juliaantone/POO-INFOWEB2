@@ -21,21 +21,23 @@ class ManterservicoUI:
             st.dataframe(df)
     def inserirser():
         descricao = st.text_input("INFORME A DESCRIÇÃO")
-        valor = st.number_input("INFORME O VALOR", min_value=0.0, step=0.01)
-        if st.button("INSERIR"): Service.servico_inserir(descricao, valor)
-        st.success("SERVIÇO INSERIDO COM SUCESSO")
-        time.sleep(2)
-        st.rerun()
+        valor = st.number_input("INFORME O VALOR", min_value=0.0, step=10.0)
+        if st.button("INSERIR"): 
+            Service.servico_inserir(descricao, valor)
+            st.success("SERVIÇO INSERIDO COM SUCESSO")
+            time.sleep(2)
+            st.rerun()
     def atualizarser():
         servicos = Service.servico_listar()
         if len(servicos) == 0: st.write("NENHUM SERVIÇO CADASTRADO")
         else:
             op = st.selectbox("ATUALIZAÇÃO DE SERVIÇO", servicos)
             descricao = st.text_input("NOVA DESCRIÇÃO", op.get_descricao())
-            valor = st.number_input("NOVO VALOR", min_value=0.0, value=float(op.get_valor()), step=0.01)
-            if st.button("ATUALIZAR"): id = op.get_id()
-            Service.servico_atualizar( id, descricao, valor)
-            st.success("SERVIÇO ATUALIZADO COM SUCESSO")
+            valor = st.number_input("NOVO VALOR", min_value=0.0, value=float(op.get_valor()), step=10.0)
+            if st.button("ATUALIZAR"): 
+                id = op.get_id() 
+                Service.servico_atualizar( id, descricao, valor)
+                st.success("SERVIÇO ATUALIZADO COM SUCESSO")
     def excluirser():
         servicos = Service.servico_listar()
         if len(servicos) == 0:

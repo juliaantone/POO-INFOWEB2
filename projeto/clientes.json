@@ -3,21 +3,24 @@
     "id": 1,
     "nome": "Kenan Y.",
     "email": "kenkenyldiz23@gmaul.com",
-    "fone": "789477410",
-    "senha": "1234"
+    "fone": "789477410"
   },
   {
     "id": 2,
     "nome": "Michael O.",
     "email": "mimiolise1@gmaul.com",
-    "fone": "121423652",
-    "senha": "1243"
+    "fone": "121423652"
   },
   {
     "id": 3,
     "nome": "Endrick F.",
     "email": "fefe84924.gmaul.com",
-    "fone": "1236547894",
-    "senha": "1235"
+    "fone": "1236547894"
+  },
+  {
+    "id": 4,
+    "nome": "Jude B.",
+    "email": "judebelli@gmaul.com",
+    "fone": "4564612523"
   }
 ]
