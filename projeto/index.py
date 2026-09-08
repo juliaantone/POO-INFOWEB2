@@ -1,7 +1,7 @@
 from templates.manterclienteui import ManterclienteUI
 from templates.manterservicoui import ManterservicoUI
 from templates.manterhorarioui import ManterHorarioUI
-#from templates.manterprofissionalui import ManterProfissionalUI
+from templates.manterprofissionalui import ManterProfissionalUI
 import streamlit as st
 
 class IndexUI:
@@ -10,7 +10,7 @@ class IndexUI:
         if op  == "CLIENTES": ManterclienteUI.main()
         if op  == "SERVIÇOS": ManterservicoUI.main()
         if op  == "HORÁRIOS": ManterHorarioUI.main()
-       # if op  == "PROFISSIONAIS": ManterProfissionalUI.main()
+        if op  == "PROFISSIONAIS": ManterProfissionalUI.main()
     def siderar():
         IndexUI.menu_admin()
     def main():
