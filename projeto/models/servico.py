@@ -20,10 +20,8 @@ class Servico:
 
     def __str__(self):
         return f"{self.__id} - {self.__descricao} - {self.__valor}"
-   
     def to_json(self):
         return { "id":self.__id, "descricao":self.__descricao, "valor":self.__valor }
-   
     @staticmethod
     def from_json(dic):
         return Servico(dic["id"], dic["descricao"], dic["valor"])

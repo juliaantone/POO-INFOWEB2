@@ -2,12 +2,15 @@ from models.cliente import Cliente
 from models.clientedao import ClienteDAO
 from models.servico import Servico
 from models.servicodao import ServicoDAO
-from models.horarios import Horario
+from projeto.models.horario import Horario
 from models.horariosdao import HorariosDAO
 from models.profissional import Profissional
 from models.profissionaldao import ProfissionalDAO
+#from models.atendimento import Atendimento
+#from models.atendimentodao import AtendimentoDAO
 
 class Service:
+    #CLIENTE
     @staticmethod
     def cliente_inserir(nome, email, fone):
         obj = Cliente(0, nome, email, fone)
@@ -26,7 +29,7 @@ class Service:
     def cliente_excluir(id):
         ClienteDAO().excluir(id)
 
-
+    #SERVIÇO
     @staticmethod
     def servico_inserir(descricao, valor):
         obj = Servico(0, descricao, valor)
@@ -45,6 +48,7 @@ class Service:
     def servico_excluir(id):
         ServicoDAO().excluir(id)
 
+    #HORÁRIO
     @staticmethod
     def horario_inserir(data, confirmado, id_cliente, id_servico):
         c = Horario(0, data)
@@ -68,27 +72,41 @@ class Service:
     @staticmethod
     def horario_excluir(id):
         HorariosDAO().excluir(id)
-    
-    #
 
-    
-
-    def inserir_profissional(profissional):
-        dao = ProfissionalDAO()
-        dao.inserir(profissional)
-
+    #PROFISSIONAL
+    @staticmethod
+    def inserir_profissional(nome, email, especialidade):
+        obj = Profissional(0, nome, email, especialidade)
+        ProfissionalDAO().inserir(obj)
+    @staticmethod
     def listar_profissionais():
-        dao = ProfissionalDAO()
-        return dao.listar()
-
+        return ProfissionalDAO().listar
+    @staticmethod
     def buscar_profissional(id):
-        dao = ProfissionalDAO()
-        return dao.buscar(id)
-
-    def atualizar_profissional(profissional):
-        dao = ProfissionalDAO()
-        dao.atualizar(profissional)
-
+       return ProfissionalDAO().listar_id(id)
+    @staticmethod
+    def atualizar_profissional(nome, email, especialidade):
+        obj = Profissional(0, nome, email, especialidade)
+        ProfissionalDAO().inserir(obj)
+    @staticmethod
     def excluir_profissional(id):
-        dao = ProfissionalDAO()
-        dao.excluir(id)
+        ProfissionalDAO().excluir(id)
+
+    #ATENDIMENTO
+    # @staticmethod
+    # def atendimento_inserir(data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario):
+        # obj = Atendimento(0, data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario)
+        # AtendimentoDAO().inserir(obj)
+    # @staticmethod
+    # def atendimento_listar():
+        # return AtendimentoDAO().listar()
+    # @staticmethod
+    # def atendimento_listar_id(id):
+        # return AtendimentoDAO().listar_id(id)
+    # @staticmethod
+    # def atendimento_atualizar(id, data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario):
+        # obj = Atendimento(id, data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario)
+        # AtendimentoDAO().atualizar(obj)
+    # @staticmethod
+    # def atendimento_excluir(id):
+        # AtendimentoDAO().excluir(id) 

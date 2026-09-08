@@ -1,4 +1,4 @@
-from models.horarios import Horario
+from projeto.models.horario import Horario
 import json
 
 class HorariosDAO:
@@ -6,6 +6,7 @@ class HorariosDAO:
         self.__arquivo = "horarios.json"
         self.__objetos = []
         self.__abrir()
+
     def inserir(self, obj):
         id = 0
         if len(self.__objetos) > 0:
@@ -14,18 +15,22 @@ class HorariosDAO:
         obj.set_id(id+1)
         self.__objetos.append(obj)
         self.__salvar()
+
     def listar(self):
         return self.__objetos
+    
     def listar_id(self, id):
         for obj in self.__objetos:
             if obj.get_id() == id: return obj
         return None
+    
     def atualizar(self, obj):
         aux= self.listar_id (obj.get_id())
         if aux != None:
             self.__objetos.remove(aux)
             self.__objetos.append(obj)
             self.__salvar()
+
     def excluir(self, id):
         aux = self.listar_id(id)
         if aux != None:
@@ -43,6 +48,7 @@ class HorariosDAO:
                 self.__objetos.append(obj)
         except FileNotFoundError:
             pass  
+
     def __salvar(self):
         arquivo = open(self.__arquivo, mode = "w")
         json.dump(self.__objeto, arquivo, default = Horario.to_json, indent = 2)
