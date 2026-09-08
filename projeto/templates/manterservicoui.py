@@ -3,14 +3,14 @@ import pandas as pd
 import time
 from service import Service
 
-class ManterservicoUI:
+class ManterServicoUI:
     def main():
         st.header("CADASTRO DE SERVIÇOS")
         tab5, tab6, tab7, tab8 = st.tabs(["LISTAR", "INSERIR", "ATUALIZAR", "EXCLUIR"])
-        with tab5: ManterservicoUI.listarser()
-        with tab6:ManterservicoUI.inserirser()
-        with tab7:ManterservicoUI.atualizarser()
-        with tab8: ManterservicoUI.excluirser()
+        with tab5: ManterServicoUI.listarser()
+        with tab6:ManterServicoUI.inserirser()
+        with tab7:ManterServicoUI.atualizarser()
+        with tab8: ManterServicoUI.excluirser()
     def listarser():
         servicos = Service.servico_listar()
         if len(servicos) == 0: st.write("NENHUM SERVIÇO CADASTRADO")
