@@ -1,4 +1,4 @@
-from projeto.models.horario import Horario
+from models.horario import Horario
 import json
 
 class HorariosDAO:

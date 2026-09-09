@@ -74,22 +74,24 @@ class Service:
         HorariosDAO().excluir(id)
 
     #PROFISSIONAL
+    # PROFISSIONAL
+
     @staticmethod
-    def inserir_profissional(nome, email, especialidade):
+    def profissional_inserir(nome, email, especialidade):
         obj = Profissional(0, nome, email, especialidade)
         ProfissionalDAO().inserir(obj)
     @staticmethod
-    def listar_profissional():
+    def profissional_listar():
         return ProfissionalDAO().listar()
     @staticmethod
-    def buscar_profissional(id):
-       return ProfissionalDAO().listar_id(id)
+    def profissional_listar_id(id):
+        return ProfissionalDAO().listar_id(id)
     @staticmethod
-    def atualizar_profissional(id, nome, email, especialidade):
+    def profissional_atualizar(id, nome, email, especialidade):
         obj = Profissional(id, nome, email, especialidade)
-        ProfissionalDAO().inserir(obj)
+        ProfissionalDAO().atualizar(obj)
     @staticmethod
-    def excluir_profissional(id):
+    def profissional_excluir(id):
         ProfissionalDAO().excluir(id)
 
     #ATENDIMENTO
