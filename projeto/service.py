@@ -95,8 +95,7 @@ class Service:
     #ATENDIMENTO
     @staticmethod
     def atendimento_inserir(data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario):
-        obj = Atendimento(0, data, queixa_principal, historico_saude, avaliacao, prescricao)
-        obj.set_id_horario(id_horario)
+        obj = Atendimento(0, data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario)
         AtendimentoDAO().inserir(obj)
     @staticmethod
     def atendimento_listar():
@@ -106,8 +105,7 @@ class Service:
         return AtendimentoDAO().listar_id(id)
     @staticmethod
     def atendimento_atualizar(id, data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario):
-        obj = Atendimento(id, data, queixa_principal, historico_saude, avaliacao, prescricao)
-        obj.set_id_horario(id_horario)
+        obj = Atendimento(id, data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario)
         AtendimentoDAO().atualizar(obj)
     @staticmethod
     def atendimento_excluir(id):

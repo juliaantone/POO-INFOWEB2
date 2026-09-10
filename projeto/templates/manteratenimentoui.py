@@ -21,7 +21,7 @@ class ManterAtendimentoUI:
         else:
             list_dic = []
             for obj in atendimentos:
-                list_dic.append({"id": obj.get_id(), "data": obj.get_data(), "queixa_principal": obj.get_queixa_principal(), "historico_saude": obj.get_historico_saude(), "avaliacao": obj.get_avaliacao(), "prescricao": obj.get_prescricao(), "id_horario": horario})
+                list_dic.append({"id": obj.get_id(), "data": obj.get_data(), "queixa_principal": obj.get_queixa_principal(), "historico_saude": obj.get_historico_saude(), "avaliacao": obj.get_avaliacao(), "prescricao": obj.get_prescricao(), "id_horario": obj.get_id_horario})
             df = pd.DataFrame(list_dic)
             st.dataframe(df)
 
@@ -107,8 +107,7 @@ class ManterAtendimentoUI:
 #                 st.success(
 #                     "ATENDIMENTO ATUALIZADO COM SUCESSO"
 #                 )
-
-    def atualizar():
+   def atualizar():
         atendimentos = Service.atendimento_listar()
         if len(atendimentos) == 0: st.write("Nenhum atendimento cadastrado")
         else:

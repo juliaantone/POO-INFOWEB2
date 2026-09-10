@@ -7,5 +7,14 @@
     "avaliacao": "Dor de cabe\u00e7a",
     "prescricao": "Dipirona",
     "id_horario": 1
+  },
+  {
+    "id": 2,
+    "data": "2026-09-10T13:38:00",
+    "queixa_principal": "dor no corpo",
+    "historico_saude": "n\u00e3o h\u00e1",
+    "avaliacao": "febre",
+    "prescricao": "dipirona",
+    "id_horario": 2
   }
 ]
