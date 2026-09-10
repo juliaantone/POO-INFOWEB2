@@ -39,7 +39,8 @@ class ManterServicoUI:
             descr = st.text_input("Informe a nova descrição", op.get_descricao())
             valor = st.text_input("Informe o novo valor", str(op.get_valor()))
             id_departamento = None if op.get_id_departamento() in [0, None] else op.get_id_departamento()
-            departamento = st.selectbox("Informe o novo departamento", departamento, next((i for i, s in enumerate(departamentos) if s.get_id() == id_departamento), None))
+            departamento = st.selectbox("Informe o novo departamento", departamento, 
+                                        next((i for i, s in enumerate(departamentos) if s.get_id() == id_departamento), None))
             if st.button("Atualizar"):
                 id_departamento = None
                 if departamento != None: id_departamento = departamento.get_id()

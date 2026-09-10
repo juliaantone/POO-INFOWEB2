@@ -1,4 +1,4 @@
-class Cliente:
+class Departamento:
     def __init__(self, id, nome, diretor, fone):
         self.set_id(id)
         self.set_nome(nome)
