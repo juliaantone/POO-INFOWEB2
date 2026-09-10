@@ -29,17 +29,10 @@ class ManterProfissionalUI:
     def inserir():
         nome = st.text_input("INFORME O NOME")
         email = st.text_input("INFORME O E-MAIL")
-        fone = st.text_input("INFORME O TELEFONE")
-        senha = st.text_input("INFORME A SENHA", type="password")
         especialidade = st.text_input("INFORME A ESPECIALIDADE")
         if st.button("INSERIR"):
             Service.profissional_inserir(
-                nome,
-                email,
-                fone,
-                senha,
-                especialidade
-            )
+                nome, email, especialidade)
             st.success("PROFISSIONAL INSERIDO COM SUCESSO")
             time.sleep(2)
             st.rerun()
@@ -61,15 +54,6 @@ class ManterProfissionalUI:
                 "NOVO E-MAIL",
                 op.get_email()
             )
-            fone = st.text_input(
-                "NOVO TELEFONE",
-                op.get_fone()
-            )
-            senha = st.text_input(
-                "NOVA SENHA",
-                op.get_senha(),
-                type="password"
-            )
             especialidade = st.text_input(
                 "NOVA ESPECIALIDADE",
                 op.get_especialidade()
@@ -80,8 +64,6 @@ class ManterProfissionalUI:
                     id,
                     nome,
                     email,
-                    fone,
-                    senha,
                     especialidade
                 )
                 st.success("PROFISSIONAL CADASTRADO COM SUCESSO")

@@ -6,12 +6,12 @@ class AtendimentoDAO:
         self.__arquivo = "atendimentos.json"
         self.__objetos = []
         self.__abrir()
+
     def inserir(self, obj):
         id = 0
         if len(self.__objetos) > 0:
             for aux in self.__objetos:
-                if aux.get_id() > id:
-                    id = aux.get_id()
+                if aux.get_id() > id: id = aux.get_id()
         obj.set_id(id + 1)
         self.__objetos.append(obj)
         self.__salvar()
@@ -52,10 +52,5 @@ class AtendimentoDAO:
 
     def __salvar(self):
         arquivo = open(self.__arquivo, mode="w")
-        json.dump(
-            self.__objetos,
-            arquivo,
-            default=Atendimento.to_json,
-            indent=2
-        )
+        json.dump(self.__objetos, arquivo, default=Atendimento.to_json, indent=2)
         arquivo.close()

@@ -1,4 +1,3 @@
-
 from models.profissional import Profissional
 import json
 
@@ -58,6 +57,5 @@ class ProfissionalDAO:
             self.__objetos,
             arquivo,
             default=Profissional.to_json,
-            indent=2
-        )
+            indent=2)
         arquivo.close()

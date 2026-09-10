@@ -51,11 +51,11 @@ class Service:
     #HORÁRIO
     @staticmethod
     def horario_inserir(data, confirmado, id_cliente, id_servico):
-        c = Horario(0, data)
-        c.set_confirmado(confirmado)
-        c.set_id_cliente(id_cliente)
-        c.set_id_servico(id_servico)
-        HorariosDAO().inserir(c)
+        obj = Horario(0, data)
+        obj.set_confirmado(confirmado)
+        obj.set_id_cliente(id_cliente)
+        obj.set_id_servico(id_servico)
+        HorariosDAO().inserir(obj)
     @staticmethod
     def horario_listar():
         return HorariosDAO().listar()
@@ -64,18 +64,16 @@ class Service:
         return HorariosDAO().listar_id(id)
     @staticmethod
     def horario_atualizar(id, data, confirmado, id_cliente, id_servico):
-        c = Horario(id, data)
-        c.set_confirmado(confirmado)
-        c.set_id_cliente(id_cliente)
-        c.set_id_servico(id_servico)
-        HorariosDAO().atualizar(c)
+        obj = Horario(id, data)
+        obj.set_confirmado(confirmado)
+        obj.set_id_cliente(id_cliente)
+        obj.set_id_servico(id_servico)
+        HorariosDAO().inserir(obj)
     @staticmethod
     def horario_excluir(id):
         HorariosDAO().excluir(id)
 
     #PROFISSIONAL
-    # PROFISSIONAL
-
     @staticmethod
     def profissional_inserir(nome, email, especialidade):
         obj = Profissional(0, nome, email, especialidade)
@@ -97,7 +95,8 @@ class Service:
     #ATENDIMENTO
     @staticmethod
     def atendimento_inserir(data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario):
-        obj = Atendimento(0, data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario)
+        obj = Atendimento(0, data, queixa_principal, historico_saude, avaliacao, prescricao)
+        obj.set_id_horario(id_horario)
         AtendimentoDAO().inserir(obj)
     @staticmethod
     def atendimento_listar():
@@ -107,7 +106,8 @@ class Service:
         return AtendimentoDAO().listar_id(id)
     @staticmethod
     def atendimento_atualizar(id, data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario):
-        obj = Atendimento(id, data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario)
+        obj = Atendimento(id, data, queixa_principal, historico_saude, avaliacao, prescricao)
+        obj.set_id_horario(id_horario)
         AtendimentoDAO().atualizar(obj)
     @staticmethod
     def atendimento_excluir(id):
