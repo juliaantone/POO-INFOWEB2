@@ -20,7 +20,7 @@ class Cliente:
         self.__fone = fone
     def set_senha(self, senha):
         if senha == "": raise ValueError("Senha deve ser informada")
-        self.__senha
+        self.__senha = senha
 
     def get_id(self) : return self.__id
     def get_nome(self) : return self.__nome
