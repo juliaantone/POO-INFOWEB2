@@ -33,9 +33,19 @@ class IndexUI:
         if op  == "HORÁRIOS": ManterHorarioUI.main()
         if op  == "PROFISSIONAIS": ManterProfissionalUI.main()
         if op  == "ATENDIMENTOS": ManterAtendimentoUI.main()
+
     def siderar():
-        IndexUI.menu_admin()
+        if "usuario_id" not in st.session_state:
+            IndexUI.menu_visitante()
+        else:
+            admin = st.session_state["usuario_nome"] == "admin"
+            st.siderar.write("BEM-VINDO(A), ") + st.session_state["usuario_nome"]
+            if admin: IndexUI.menu_cliente()
+            else: IndexUI.menu_cliente()
+            IndexUI.sair_do_sistema()
+
     def main():
+        Service.cliente_criar_admin()
         IndexUI.siderar()
         
 IndexUI.main()
