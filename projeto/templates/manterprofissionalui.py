@@ -30,9 +30,10 @@ class ManterProfissionalUI:
         nome = st.text_input("INFORME O NOME")
         email = st.text_input("INFORME O E-MAIL")
         especialidade = st.text_input("INFORME A ESPECIALIDADE")
+        senha = st.text_input("Informe a senha", type="password")
         if st.button("INSERIR"):
             Service.profissional_inserir(
-                nome, email, especialidade)
+                nome, email, especialidade, senha)
             st.success("PROFISSIONAL INSERIDO COM SUCESSO")
             time.sleep(2)
             st.rerun()
@@ -44,29 +45,28 @@ class ManterProfissionalUI:
         else:
             op = st.selectbox(
                 "ATUALIZAÇÃO DE PROFISSIONAL",
-                profissionais
-            )
+                profissionais)
             nome = st.text_input(
                 "NOVO NOME",
-                op.get_nome()
-            )
+                op.get_nome())
             email = st.text_input(
                 "NOVO E-MAIL",
-                op.get_email()
-            )
+                op.get_email())
             especialidade = st.text_input(
                 "NOVA ESPECIALIDADE",
-                op.get_especialidade()
-            )
+                op.get_especialidade())
+            senha = st.text_input("Nova senha", op.get_senha(), type="password")
             if st.button("ATUALIZAR"):
                 id = op.get_id()
                 Service.profissional_atualizar(
                     id,
                     nome,
                     email,
-                    especialidade
-                )
+                    especialidade,
+                    senha
+                    )
                 st.success("PROFISSIONAL CADASTRADO COM SUCESSO")
+                st.rerun()
 
     def excluir():
         profissionais = Service.profissional_listar()
@@ -81,3 +81,4 @@ class ManterProfissionalUI:
                 id = op.get_id()
                 Service.profissional_excluir(id)
                 st.success("PROFISSIONAL EXCLUÍDO COM SUCESSO")
+                st.rerun()
