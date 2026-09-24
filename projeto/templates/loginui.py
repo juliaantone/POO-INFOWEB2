@@ -3,7 +3,7 @@ from service import Service
 
 class LoginUI:
     def main():
-        st.header("Entrar no Sistema")
+        st.header("ENTAR NO SISTEMA")
         email = st.text_input("Informe o e-mail")
         senha = st.text_input("Informe a senha", type="password")
         if st.button("Entrar"):

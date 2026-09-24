@@ -4,7 +4,7 @@ import time
 
 class AbrirContaUI:
     def main():
-        st.header("Abrir Conta no Sistema")
+        st.header("ABRIR CONTA NO SISTEMA")
         nome = st.text_input("Informe o nome")
         email = st.text_input("Informe o e-mail")
         fone = st.text_input("Informe o fone")

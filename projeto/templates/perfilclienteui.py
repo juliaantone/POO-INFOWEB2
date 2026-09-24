@@ -4,7 +4,7 @@ import time
 
 class PerfilClienteUI:
     def main():
-        st.header("Meus Dados")
+        st.header("MEUS DADOS")
         op = Service.cliente_listar_id(st.session_state["usuario_id"])
         nome = st.text_input("Informe o novo nome", op.get_nome())
         email = st.text_input("Informe o novo e-mail", op.get_email())

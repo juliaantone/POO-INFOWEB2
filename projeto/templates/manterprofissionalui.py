@@ -8,8 +8,7 @@ class ManterProfissionalUI:
     def main():
         st.header("CADASTRO DE PROFISSIONAIS")
         tab1, tab2, tab3, tab4 = st.tabs(
-            ["LISTAR", "INSERIR", "ATUALIZAR", "EXCLUIR"]
-        )
+            ["LISTAR", "INSERIR", "ATUALIZAR", "EXCLUIR"])
         with tab1:ManterProfissionalUI.listar()
         with tab2:ManterProfissionalUI.inserir()
         with tab3:ManterProfissionalUI.atualizar()
