@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "descricao": "CORTE FEMININO",
+    "valor": 70.0
+  },
+  {
+    "id": 2,
+    "descricao": "CORTE MASCULINO",
+    "valor": 50.0
+  }
+]

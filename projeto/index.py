@@ -14,7 +14,7 @@ class IndexUI:
     def menu_visitante():
         op = st.sidebar.selectbox("MENU", ['ENTRAR NO SISTEMA', 'ABRIR CONTA'])
         if op == "ENTRAR NO SISTEMA": LoginUI.main()
-        if op == "ABRIRIR CONTA": AbrirContaUI.main()
+        if op == "ABRIR CONTA": AbrirContaUI.main()
 
     def menu_cliente():
         op = st.sidebar.selectbox("MENU", ['MEUS DADOS'])

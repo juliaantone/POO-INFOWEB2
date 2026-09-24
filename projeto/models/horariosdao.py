@@ -51,5 +51,5 @@ class HorariosDAO:
 
     def __salvar(self):
         arquivo = open(self.__arquivo, mode = "w")
-        json.dump(self.__objeto, arquivo, default = Horario.to_json, indent = 2)
+        json.dump(self.__objetos, arquivo, default = Horario.to_json, indent = 2)
         arquivo.close()

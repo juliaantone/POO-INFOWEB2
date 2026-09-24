@@ -29,7 +29,7 @@ class Horario:
     def __str__(self):
             return f"{self.__id} - {self.__data.strftime('%d/%m/%Y %H:%M')} - {self.__confirmado}"
     def to_json(self):
-        return { "id":self.__id, "data":self.__data.strftime("%d/%m/%Y %H:%M"), "confirmado": {self.__confirmado}, "id_cliente": {self.__id_cliente}, "id_servico": {self.__id_servico}, "id_profissional": {self.__id_profissional}}
+        return { "id":self.__id, "data":self.__data.strftime("%d/%m/%Y %H:%M"), "confirmado": self.__confirmado, "id_cliente": self.__id_cliente, "id_servico": self.__id_servico, "id_profissional": self.__id_profissional}
     
     @staticmethod
     def from_json(dic):
