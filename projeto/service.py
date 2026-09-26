@@ -8,7 +8,7 @@ from models.profissional import Profissional
 from models.profissionaldao import ProfissionalDAO
 from models.atendimento import Atendimento
 from models.atendimentodao import AtendimentoDAO
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class Service:
     #CLIENTE
@@ -18,7 +18,7 @@ class Service:
         ClienteDAO().inserir(obj)
     @staticmethod
     def cliente_listar():
-        r = ClienteDAO.listar()
+        r = ClienteDAO().listar()
         r.sort(key = lambda obj : obj.get_nome().casefold())
         return r
     @staticmethod
@@ -42,6 +42,19 @@ class Service:
             if c.get_email() == email and c.get_senha() == senha:
                 return{"id": c.get_id(), "nome": c.get_nome()}
         return None
+    @staticmethod
+    def horario_listar_cliente(id_cliente):
+        r = []
+        for h in Service.horario_listar():
+            if h.get_id_cliente() == id_cliente:
+                r.append(h)
+        return r
+    @staticmethod
+    def cliente_alterar_senha(id, senha):
+        cliente = Service.cliente_listar_id(id)
+        if cliente != None:
+            cliente.set_senha(senha)
+            ClienteDAO().atualizar(cliente)
 
     #SERVIÇO
     @staticmethod
@@ -50,7 +63,7 @@ class Service:
         ServicoDAO().inserir(obj)
     @staticmethod
     def servico_listar():
-        r = ServicoDAO.listar()
+        r = ServicoDAO().listar()
         r.sort(key = lambda obj : obj.get_descricao().casefold())
         return r
     @staticmethod
@@ -88,7 +101,7 @@ class Service:
         obj.set_id_cliente(id_cliente)
         obj.set_id_servico(id_servico)
         obj.set_id_profissional(id_profissional)
-        HorariosDAO().inserir(obj)
+        HorariosDAO().atualizar(obj)
     @staticmethod
     def horario_excluir(id):
         HorariosDAO().excluir(id)
@@ -97,10 +110,23 @@ class Service:
         r = []
         agora= datetime.now()
         for h in Service.horario_listar():
-            if h.get_data() >= agora and h.get_confirmado() == False and h.get_id_cliente() == None and h.get_id_profissional() == id_profissional:
+            if h.get_data() >= agora and h.get_confirmado() == False and h.get_id_cliente() == 0 and h.get_id_profissional() == id_profissional:
                 r.append(h)
                 r.sort(key = lambda h : h.get_data())
                 return r
+    @staticmethod
+    def horario_abrir_agenda(data, hora_inicial, hora_final, intervalo, id_profissional):
+        inicio = datetime.combine(data, hora_inicial)
+        fim = datetime.combine(data, hora_final)
+        while inicio < fim:
+            Service.horario_inserir(inicio, False, 0, 0, id_profissional)
+            inicio = inicio + timedelta(minutes=intervalo)
+    @staticmethod
+    def horario_confirmar(id):
+        horario = Service.horario_listar_id(id)
+        if horario != None:
+            horario.set_confirmado(True)
+            HorariosDAO().atualizar(horario)
 
     #PROFISSIONAL
     @staticmethod
@@ -109,7 +135,7 @@ class Service:
         ProfissionalDAO().inserir(obj)
     @staticmethod
     def profissional_listar():
-        r = ProfissionalDAO.listar()
+        r = ProfissionalDAO().listar()
         r.sort(key = lambda obj : obj.get_nome ().casefold())
         return r
     @staticmethod
@@ -128,8 +154,21 @@ class Service:
             if c.get_email() == email and c.get_senha() == senha:
                 return {"id": c.get_id(), "nome": c.get_nome()}
         return None
+    @staticmethod
+    def horario_listar_profissional(id_profissional):
+        r = []
+        for h in Service.horario_listar():
+            if h.get_id_profissional() == id_profissional:
+                r.append(h)
+        return r
+    @staticmethod
+    def profissional_alterar_senha(id, senha):
+        profissional = Service.profissional_listar_id(id)
+        if profissional != None:
+            profissional.set_senha(senha)
+            ProfissionalDAO().atualizar(profissional)
 
-    #ATENDIMENTO
+        #ATENDIMENTO
     @staticmethod
     def atendimento_inserir(data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario):
         obj = Atendimento(0, data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario)
