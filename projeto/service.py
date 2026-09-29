@@ -115,13 +115,17 @@ class Service:
                 r.sort(key = lambda h : h.get_data())
                 return r
     @staticmethod
-    def horario_abrir_agenda(data, hora_inicial, hora_final, intervalo, id_profissional):
-        inicio = datetime.combine(data, hora_inicial)
-        fim = datetime.combine(data, hora_final)
-        while inicio < fim:
-            Service.horario_inserir(inicio, False, 0, 0, id_profissional)
-            inicio = inicio + timedelta(minutes=intervalo)
-    @staticmethod
+    def horario_abrir_agenda(data, hora_inicio, hora_fim, intervalo, id_profissional):
+        data_inicio = datetime.strptime(data + " " + hora_inicio, "%d/%m/%Y %H:%M")
+        data_fim = datetime.strptime (data + " " + hora_fim, "%d/%m/%Y %H:%M")
+        delta = timedelta(minutes = intervalo)
+        data = data_inicio
+        while data <= data_fim:
+            # INSERA UM HORÁRIO
+            Service.horario_inserir(data, False, None, None, intervalo, id_profissional)
+            # E DEPOIS VAI PAR UM PRÓXIMO HORÁRIO
+            data = data + delta
+
     def horario_confirmar(id):
         horario = Service.horario_listar_id(id)
         if horario != None:
