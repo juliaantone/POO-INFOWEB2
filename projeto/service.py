@@ -122,7 +122,7 @@ class Service:
         data = data_inicio
         while data <= data_fim:
             # INSERA UM HORÁRIO
-            Service.horario_inserir(data, False, None, None, intervalo, id_profissional)
+            Service.horario_inserir(data, False, None, intervalo, id_profissional)
             # E DEPOIS VAI PAR UM PRÓXIMO HORÁRIO
             data = data + delta
 
