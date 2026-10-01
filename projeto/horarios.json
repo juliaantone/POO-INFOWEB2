@@ -6,5 +6,37 @@
     "id_cliente": 2,
     "id_servico": 1,
     "id_profissional": 0
+  },
+  {
+    "id": 2,
+    "data": "01/10/2026 12:00",
+    "confirmado": false,
+    "id_cliente": null,
+    "id_servico": 60,
+    "id_profissional": 1
+  },
+  {
+    "id": 3,
+    "data": "01/10/2026 13:00",
+    "confirmado": false,
+    "id_cliente": null,
+    "id_servico": 60,
+    "id_profissional": 1
+  },
+  {
+    "id": 4,
+    "data": "01/10/2026 13:30",
+    "confirmado": false,
+    "id_cliente": null,
+    "id_servico": 60,
+    "id_profissional": 1
+  },
+  {
+    "id": 5,
+    "data": "01/10/2026 14:30",
+    "confirmado": false,
+    "id_cliente": null,
+    "id_servico": 60,
+    "id_profissional": 1
   }
 ]

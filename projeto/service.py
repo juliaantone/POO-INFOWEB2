@@ -106,14 +106,31 @@ class Service:
     def horario_excluir(id):
         HorariosDAO().excluir(id)
     @staticmethod
+    # def horario_listar_disponiveis(id_profissional):
+    #     r = []
+    #     agora= datetime.now()
+    #     for h in Service.horario_listar():
+    #         if h.get_data() >= agora and h.get_confirmado() == False and h.get_id_cliente() == 0 and h.get_id_profissional() == id_profissional:
+    #             r.append(h)
+    #             r.sort(key = lambda h : h.get_data())
+    #             return r
+
+    @staticmethod
     def horario_listar_disponiveis(id_profissional):
         r = []
-        agora= datetime.now()
+        agora = datetime.now()
+
         for h in Service.horario_listar():
-            if h.get_data() >= agora and h.get_confirmado() == False and h.get_id_cliente() == 0 and h.get_id_profissional() == id_profissional:
+            if (
+                h.get_data() >= agora
+                and h.get_confirmado() == False
+                and h.get_id_cliente() == 0
+                and h.get_id_profissional() == id_profissional
+            ):
                 r.append(h)
-                r.sort(key = lambda h : h.get_data())
-                return r
+
+        r.sort(key=lambda h: h.get_data())
+        return r
     @staticmethod
     def horario_abrir_agenda(data, hora_inicio, hora_fim, intervalo, id_profissional):
         data_inicio = datetime.strptime(data + " " + hora_inicio, "%d/%m/%Y %H:%M")
