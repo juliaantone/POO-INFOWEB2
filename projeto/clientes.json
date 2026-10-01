@@ -12,5 +12,12 @@
     "email": "lalaayala@email.com",
     "fone": "41524178",
     "senha": "1234"
+  },
+  {
+    "id": 3,
+    "nome": "Matias Lopez",
+    "email": "lopezzz@email.com",
+    "fone": "41526352",
+    "senha": "1234"
   }
 ]

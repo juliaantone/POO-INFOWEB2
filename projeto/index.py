@@ -25,9 +25,9 @@ class IndexUI:
         if op == "ABRIR AGENDA": AbrirMinhaAgendaUI.main()
 
     def menu_profissional():
-        op = st.sidebar.selectbox("Menu", ["Meus Dados", "Abrir Agenda"])
-        if op == "Meus Dados": PerfilProfissionalUI.main()
-        if op == "Abrir Agenda": AbrirMinhaAgendaUI.main()
+        op = st.sidebar.selectbox("MENU", ["MEUS DADOS", "ABRIR AGENDA"])
+        if op == "MEUS DADOS": PerfilProfissionalUI.main()
+        if op == "ABRIR AGENDA": AbrirMinhaAgendaUI.main()
 
     def menu_admin():
         Service.cliente_criar_admin()
