@@ -8,5 +8,10 @@
     "id": 2,
     "descricao": "CORTE MASCULINO",
     "valor": 50.0
+  },
+  {
+    "id": 3,
+    "descricao": "MANICURE",
+    "valor": 30.0
   }
 ]

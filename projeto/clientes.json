@@ -19,5 +19,19 @@
     "email": "lopezzz@email.com",
     "fone": "41526352",
     "senha": "1234"
+  },
+  {
+    "id": 4,
+    "nome": "Erick Julian de La Torre",
+    "email": "erickkkk12@email.com",
+    "fone": "78454512",
+    "senha": "1234"
+  },
+  {
+    "id": 5,
+    "nome": "Paolo de Luca Bastini",
+    "email": "paololulu@email.com",
+    "fone": "85214523",
+    "senha": "12345"
   }
 ]

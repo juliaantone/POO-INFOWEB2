@@ -139,14 +139,21 @@ class Service:
         data = data_inicio
         while data <= data_fim:
             # INSERA UM HORÁRIO
-            Service.horario_inserir(data, False, None, intervalo, id_profissional)
+            Service.horario_inserir(data, False, 0, 0, id_profissional)
             # E DEPOIS VAI PAR UM PRÓXIMO HORÁRIO
             data = data + delta
-
+    @staticmethod
     def horario_confirmar(id):
         horario = Service.horario_listar_id(id)
         if horario != None:
             horario.set_confirmado(True)
+            HorariosDAO().atualizar(horario)
+    @staticmethod
+    def horario_agendar(id, id_cliente, id_servico):
+        horario = Service.horario_listar_id(id)
+        if horario != None:
+            horario.set_id_cliente(id_cliente)
+            horario.set_id_servico(id_servico)
             HorariosDAO().atualizar(horario)
 
     #PROFISSIONAL

@@ -5,5 +5,12 @@
     "email": "dralimabeaatriz@email.com",
     "especialidade": "Dentista",
     "senha": "1234"
+  },
+  {
+    "id": 2,
+    "nome": "DRA. Anna Minnilia Alvarez Los Rojos",
+    "email": "annhinhalosrojos@email.com",
+    "especialidade": "Pediatra",
+    "senha": "1234"
   }
 ]

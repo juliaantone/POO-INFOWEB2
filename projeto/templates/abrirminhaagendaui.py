@@ -5,7 +5,7 @@ import time
 
 class AbrirMinhaAgendaUI:
     def main():
-        st.header("Abrir Minha Agenda")
+        st.header("ABRIR MINHA AGENDA")
         data = st.text_input("Informe a data no formato dd/mm/aaaa", datetime.now().strftime("%d/%m/%Y"))
         hora_inicio = st.text_input("Informe o horário inicial no formato HH:MM")
         hora_fim = st.text_input("Informe o horário final no formato HH:MM")
