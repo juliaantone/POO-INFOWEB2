@@ -195,7 +195,16 @@ class Service:
         if profissional != None:
             profissional.set_senha(senha)
             ProfissionalDAO().atualizar(profissional)
-
+    @staticmethod
+    def horario_confirmar_servico(id_profissional):
+        r = []
+        for h in Service.horario_listar():
+            if h.get_confimado() == False and h.get_id_cliente() != None \
+                and h.get_id_profissional() == 0 and h.get_id_profissional() == id_profissional:
+                r.append(h)
+        r.sort(key=lambda h: h.get_data())
+        return r
+    
         #ATENDIMENTO
     @staticmethod
     def atendimento_inserir(data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario):

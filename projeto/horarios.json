@@ -8,14 +8,6 @@
     "id_profissional": 0
   },
   {
-    "id": 2,
-    "data": "01/10/2026 12:00",
-    "confirmado": false,
-    "id_cliente": null,
-    "id_servico": 60,
-    "id_profissional": 1
-  },
-  {
     "id": 3,
     "data": "01/10/2026 13:00",
     "confirmado": false,
@@ -77,6 +69,30 @@
     "confirmado": false,
     "id_cliente": null,
     "id_servico": 60,
+    "id_profissional": 1
+  },
+  {
+    "id": 2,
+    "data": "01/10/2026 12:00",
+    "confirmado": true,
+    "id_cliente": null,
+    "id_servico": 60,
+    "id_profissional": 1
+  },
+  {
+    "id": 11,
+    "data": "06/10/2026 17:00",
+    "confirmado": false,
+    "id_cliente": 0,
+    "id_servico": 0,
+    "id_profissional": 1
+  },
+  {
+    "id": 12,
+    "data": "06/10/2026 17:30",
+    "confirmado": false,
+    "id_cliente": 2,
+    "id_servico": 3,
     "id_profissional": 1
   }
 ]

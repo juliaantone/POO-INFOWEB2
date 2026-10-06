@@ -12,5 +12,12 @@
     "email": "annhinhalosrojos@email.com",
     "especialidade": "Pediatra",
     "senha": "1234"
+  },
+  {
+    "id": 3,
+    "nome": "DRA. Paulo Andre Lima",
+    "email": "andree@email.com",
+    "especialidade": "Pediatra",
+    "senha": "1234"
   }
 ]
