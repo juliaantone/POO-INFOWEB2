@@ -16,7 +16,6 @@ from templates.alterarsenhaui import AlterarSenhaUI
 from service import Service
 import streamlit as st
 
-
 class IndexUI:
     def menu_visitante():
         op = st.sidebar.selectbox("MENU", ['ENTRAR NO SISTEMA', 'ABRIR CONTA'])
