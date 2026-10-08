@@ -52,9 +52,7 @@ class Atendimento:
             "prescricao": self.get_prescricao(),
             "id_horario": self.get_id_horario()
         }
-    #def to_json(self):
-        #return { "id":self.__id, "data":self.__data.strftime("%d/%m/%Y %H:%M"), "queixa_principal":self.__queixa_principal, "historico_saude":self.__historico_saude, "historico_saude":self.__historico_saude, "avaliacao":self.__avaliacao, "prescricao":self.__prescricao, "id_horario":self.__id_horario }
-    
+
     @staticmethod
     def from_json(dic):
         return Atendimento(
