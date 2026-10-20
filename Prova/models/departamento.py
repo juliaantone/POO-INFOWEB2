@@ -31,4 +31,4 @@ class Departamento:
     
     @staticmethod
     def from_json(dic):
-        return Cliente(dic["id"], dic["nome"], dic["diretor"], dic["fone"])
+        return Departamento(dic["id"], dic["nome"], dic["diretor"], dic["fone"])
