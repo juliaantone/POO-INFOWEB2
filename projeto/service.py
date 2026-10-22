@@ -205,7 +205,7 @@ class Service:
         r.sort(key=lambda h: h.get_data())
         return r
     
-        #ATENDIMENTO
+    #ATENDIMENTO
     @staticmethod
     def atendimento_inserir(data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario):
         obj = Atendimento(0, data, queixa_principal, historico_saude, avaliacao, prescricao, id_horario)
@@ -223,3 +223,26 @@ class Service:
     @staticmethod
     def atendimento_excluir(id):
         AtendimentoDAO().excluir(id) 
+
+     #TOTALIZAR ATENDIMENTOS DOS PROFISSIONAIS
+
+    @staticmethod
+    def atendimento_totalizar_profissionais(data_inicial, data_final):
+        profissionais = Service.profissional_listar()
+        horarios = Service.horario_listar()
+        resultado = []
+        for profissional in profissionais:
+            quantidade = 0
+            for h in horarios:
+                data_horario = h.get_data().date()
+                if (
+                    h.get_id_profissional() == profissional.get_id()
+                    and h.get_confirmado() == True
+                    and data_inicial <= data_horario <= data_final
+                ):
+                    quantidade = quantidade + 1
+            resultado.append({
+                "PROFISSIONAL": profissional.get_nome(),
+                "ATENDIMENTOS CONFIRMADOS": quantidade
+            })
+        return resultado
